@@ -1,4 +1,3 @@
-// app/auth/signup/page.tsx
 "use client";
 
 export default function SignupPage() {

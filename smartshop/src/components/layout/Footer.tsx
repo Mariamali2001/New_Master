@@ -28,10 +28,10 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 flex items-center justify-between border-t border-neutral-200 pt-6 text-xs text-neutral-500">
+        <div className="mt-20 flex items-center justify-between border-t border-neutral-300 pt-10 text-xs text-neutral-500">
           <p>© {new Date().getFullYear()} SmartShopping. All rights reserved.</p>
-          <div className="flex gap-3">
-            <img src="/images/payments.png" alt="Payments" className="h-5" />
+          <div className="flex gap-7">
+            <img src="/images/payments.avif" alt="Payments" className="h-30" />
           </div>
         </div>
       </div>

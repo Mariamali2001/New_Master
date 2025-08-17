@@ -27,12 +27,14 @@ export function Footer() {
             </ul>
           </div>
         </div>
-
-        <div className="mt-20 flex items-center justify-between border-t border-neutral-300 pt-10 text-xs text-neutral-500">
-          <p>© {new Date().getFullYear()} SmartShopping. All rights reserved.</p>
-          <div className="flex gap-7">
-            <img src="/images/payments.avif" alt="Payments" className="h-30" />
-          </div>
+<div className="mt-20 flex items-center justify-between border-t border-neutral-300 pt-10 text-xs text-neutral-500">
+  <p>© {new Date().getFullYear()} SmartShopping. All rights reserved.</p>
+  <div className="flex gap-5">
+    <img src="/images/visa.png" alt="Visa" className="h-10 w-auto" />
+    <img src="/images/paypal.png" alt="PayPal" className="h-10 w-auto" />
+    <img src="/images/card.png" alt="MasterCard" className="h-10 w-auto" />
+    <img src="/images/google-pay.png" alt="GooglePay" className="h-10 w-auto" />
+  </div>
         </div>
       </div>
     </footer>

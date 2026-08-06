@@ -1,18 +1,19 @@
 Trait,Level,Property,Internal_Property,Nudge,Direction,Provenance,Modifier_Evidence_Score,Strength,Group_N,Delta,Cramers_V,RF_Importance,Mean_SHAP
-Agreeableness,High,recommendation_strength,recommendation_emphasis,1,increase,theory,0.326507,Moderate,94,,0.13587,0.13503,0.018411
-Agreeableness,Low,recommendation_strength,recommendation_emphasis,1,increase,data-driven,0.633345,Strong,24,0.085,0.13587,0.13503,0.018411
-Conscientiousness,High,information_density,information_density,1,increase,theory,0.272673,Weak,66,,0.067581,0.136669,0.027815
-Conscientiousness,Low,information_density,information_density,-1,decrease,theory,0.258723,Weak,35,,0.067581,0.136669,0.027815
-Extraversion,High,recommendation_strength,recommendation_emphasis,-1,decrease,data-driven,0.635308,Strong,29,-0.0723,0.147525,0.118417,0.025219
-Extraversion,High,information_density,information_density,-1,decrease,data-driven,0.5782,Strong,29,-0.0522,0.092127,0.149454,0.029968
-Extraversion,High,animation,animation_level,1,increase,theory,0.01305,Weak,29,,0.0,0.0,0.0
-Extraversion,Low,recommendation_strength,recommendation_emphasis,-1,decrease,theory,0.323285,Moderate,61,,0.147525,0.118417,0.025219
-Neuroticism,High,recommendation_strength,recommendation_emphasis,1,increase,data-driven,0.765863,Very Strong,45,0.0503,0.19336,0.160564,0.03152
-Neuroticism,High,information_density,information_density,-1,decrease,theory,0.361396,Moderate,45,,0.130845,0.159458,0.036613
-Neuroticism,High,whitespace,whitespace,1,increase,theory,0.33433,Moderate,45,,0.104545,0.173464,0.030008
-Neuroticism,High,animation,animation_level,-1,decrease,theory,0.02025,Weak,45,,0.0,0.0,0.0
-Openness,High,visual_richness,visual_richness,1,increase,theory,0.405088,Moderate,59,,0.174994,0.145288,0.040455
-Openness,High,animation,animation_level,1,increase,theory,0.02655,Weak,59,,0.0,0.0,0.0
-Openness,Low,information_density,information_density,1,increase,data-driven,0.720818,Very Strong,32,0.09,0.13946,0.163294,0.025649
-Openness,Low,visual_richness,visual_richness,-1,decrease,theory,0.392938,Moderate,32,,0.174994,0.145288,0.040455
-Openness,Low,animation,animation_level,-1,decrease,theory,0.0144,Weak,32,,0.0,0.0,0.0
+Agreeableness,High,recommendation_strength,recommendation_emphasis,1,increase,theory,0.30661,Moderate,99,,0.097985,0.122641,0.025799
+Conscientiousness,High,information_density,information_density,1,increase,theory,0.319887,Moderate,68,,0.109735,0.138486,0.02673
+Conscientiousness,Low,whitespace,whitespace,-1,decrease,data-driven,0.807238,Very Strong,43,-0.057,0.174924,0.163429,0.037647
+Conscientiousness,Low,information_density,information_density,-1,decrease,theory,0.308637,Moderate,43,,0.109735,0.138486,0.02673
+Extraversion,High,recommendation_strength,recommendation_emphasis,-1,decrease,data-driven,0.649328,Strong,33,-0.0793,0.134106,0.127419,0.018839
+Extraversion,High,information_density,information_density,-1,decrease,data-driven,0.602851,Strong,33,-0.0616,0.106715,0.137781,0.023054
+Extraversion,High,animation,animation_level,1,increase,theory,0.01485,Weak,33,,0.0,0.0,0.0
+Extraversion,Low,recommendation_strength,recommendation_emphasis,-1,decrease,theory,0.313547,Moderate,64,,0.134106,0.127419,0.018839
+Neuroticism,High,recommendation_strength,recommendation_emphasis,1,increase,data-driven,0.792847,Very Strong,48,0.0528,0.179644,0.151059,0.037582
+Neuroticism,High,information_density,information_density,-1,decrease,theory,0.368946,Moderate,48,,0.122399,0.175576,0.032592
+Neuroticism,High,whitespace,whitespace,1,increase,theory,0.328673,Moderate,48,,0.096046,0.159441,0.032268
+Neuroticism,High,animation,animation_level,-1,decrease,theory,0.0216,Weak,48,,0.0,0.0,0.0
+Neuroticism,Medium,recommendation_strength,recommendation_emphasis,-1,decrease,data-driven,0.816638,Very Strong,83,-0.0515,0.179644,0.151059,0.037582
+Openness,High,visual_richness,visual_richness,1,increase,theory,0.408289,Moderate,62,,0.184476,0.147466,0.031123
+Openness,High,animation,animation_level,1,increase,theory,0.0279,Weak,62,,0.0,0.0,0.0
+Openness,Low,information_density,information_density,1,increase,data-driven,0.645089,Strong,37,0.0566,0.141341,0.14311,0.019238
+Openness,Low,visual_richness,visual_richness,-1,decrease,theory,0.397039,Moderate,37,,0.184476,0.147466,0.031123
+Openness,Low,animation,animation_level,-1,decrease,theory,0.01665,Weak,37,,0.0,0.0,0.0

@@ -1,0 +1,303 @@
+================================================================================
+GUIDELINE EXTRACTION PIPELINE — ALL 10 NOTEBOOKS
+Evidence-Based Adaptive UI (SmartShop Master's Thesis)
+Folder: smartshop/EvidenceBasedAdaptiveUI/notebooks/
+================================================================================
+
+Purpose of this file
+--------------------
+Explain what each notebook did to turn survey answers into verified UI
+guideline JSON that the website Adaptive Engine can use.
+
+High-level flow
+---------------
+
+  Raw survey CSV
+        │
+        ▼
+  [01] Cleaning & preprocessing
+        │
+        ▼
+  [02] Exploratory data analysis (what people prefer)
+        │
+        ▼
+  [03] Statistical validation (which links are significant)
+        │
+        ▼
+  [04] Feature importance / SHAP (which context drives UI)
+        │
+        ▼
+  [05] Default UI repository (majority = baseline UI)
+        │
+        ├──────────────────┬──────────────────┐
+        ▼                  ▼                  ▼
+  [06] Persona       [07] Mood         [08] Personality
+       overrides          overrides         nudges only
+        │                  │                  │
+        └────────────┬─────┴──────────────────┘
+                     ▼
+              [09] Adaptive repository
+                     │
+                     ▼
+              [10] Adaptive decision engine (simulation)
+
+
+================================================================================
+NOTEBOOK 01 — Data Cleaning & Preprocessing
+File: 01_Data_Cleaning.ipynb
+================================================================================
+
+What happened
+  - Loaded raw survey: data/raw/E-Commerce - data.csv
+  - Checked data quality (dtypes, missing, unique counts)
+  - Attention checkers check1–check5:
+      Keep if ≥ 4/5 correct (at most 1 wrong)
+      Remove if ≥ 2 wrong (likely low-effort / “for fun”)
+  - Duplicate / missing-value checks
+  - Standardized column names
+  - Computed Big Five (TIPI-style) scores + High/Medium/Low levels
+  - Dropped raw BFI item columns after scoring
+
+Why it matters
+  Only clean, attentive responses should feed guidelines.
+
+Main outputs
+  - data/processed/clean_dataset.csv
+  - reports/01_data_cleaning/*
+
+
+================================================================================
+NOTEBOOK 02 — Exploratory Data Analysis & Knowledge Discovery
+File: 02_Exploratory_Data_Analysis.ipynb
+================================================================================
+
+What happened
+  - Profiled who answered (age, gender, education, device)
+  - Explored shopping behaviour and context (persona, mood, traits)
+  - Counted majority choices for Global / Desktop / Mobile UI fields
+  - Cross-tabs: Mood × UI, Persona × UI, Device × UI
+  - Wrote preliminary insights (hypotheses for later validation)
+
+Why it matters
+  Shows “common guidelines” and where preferences split — candidates for
+  defaults vs overrides.
+
+Main outputs
+  - reports/02_exploratory_data_analysis/*
+  - Figures + Excel tables + preliminary_insights.md
+
+
+================================================================================
+NOTEBOOK 03 — Statistical Validation
+File: 03_Statistical_Validation.ipynb
+================================================================================
+
+What happened
+  - Ran chi-square (and related) tests between context variables
+    (persona, mood, device, traits, shopping behaviour) and UI preferences
+  - Classified evidence as strong / moderate / exploratory
+  - Kept full result tables; highlighted supported relationships only
+
+Why it matters
+  Prevents inventing UI rules from noise. Later override notebooks prefer
+  statistically supported links.
+
+Main outputs
+  - reports/Statistical_Validation/tables/statistical_results.xlsx
+  - strong_evidence / moderate_evidence / exploratory_evidence / top_evidence
+  - statistical_summary.md + heatmaps
+
+
+================================================================================
+NOTEBOOK 04 — Feature Importance (Random Forest + SHAP)
+File: 04_Feature_Importance.ipynb
+================================================================================
+
+What happened
+  - Trained predictive models for UI targets in three groups:
+      Global UI, Desktop UI, Mobile UI
+  - Used Random Forest + SHAP to rank which context features matter most
+  - Compared (for reference) with Notebook 03 evidence
+
+Why it matters
+  Adds a second evidence source: not only “significant association” but
+  “how much does this context help predict that UI choice?”
+
+Main outputs
+  - reports/Feature_Importance/* (metrics, SHAP plots, group summaries)
+  - pipeline_summary.md
+
+
+================================================================================
+NOTEBOOK 05 — Default UI Repository
+File: 05_Default_UI_Repository.ipynb
+================================================================================
+
+What happened
+  - NO ML / NO association rules here
+  - For every UI element, took the **majority** answer in clean_dataset
+  - Built three baseline JSON repos:
+      global_defaults.json
+      desktop_defaults.json
+      mobile_defaults.json
+
+Why it matters
+  This is the website’s starting UI before persona/mood/traits adapt it.
+  Matches the “common guidelines” idea (strong majorities = safe defaults).
+
+Main outputs
+  - data/outputs/global_defaults.json
+  - data/outputs/desktop_defaults.json
+  - data/outputs/mobile_defaults.json
+  - reports/DefaultUI/*
+
+
+================================================================================
+NOTEBOOK 06 — Persona Overrides
+File: 06_Persona_Overrides.ipynb
+================================================================================
+
+What happened
+  - For each shopping persona (Researcher, Minimalist, Deal Hunter, …)
+  - Found UI values that:
+      1) Differ from Notebook 05 defaults
+      2) Are backed by multiple evidence sources (stats / RF / SHAP / rules)
+  - Wrote ONLY those differing keys as overrides (no full UI rebuild)
+
+Why it matters
+  Persona adapts selected elements, not the whole page.
+
+Main outputs
+  - data/outputs/persona_overrides.json
+  - reports/PersonaOverrides/*
+  - (website often uses persona_lookup.json derived/copied from this)
+
+
+================================================================================
+NOTEBOOK 07 — Mood Overrides
+File: 07_Mood_Overrides.ipynb
+================================================================================
+
+What happened
+  - Same idea as persona, but for moods (Happy, Stressed, Relaxed, …)
+  - Override only when mood preference differs from default AND evidence
+    supports it (≥ 2 sources)
+  - Mood layer is intended to win over persona on the same UI key later
+
+Why it matters
+  Live website uses detected mood → these overrides drive adaptation.
+
+Main outputs
+  - data/outputs/mood_overrides.json
+  - reports/MoodOverrides/*
+  - (website often uses mood_lookup.json)
+
+
+================================================================================
+NOTEBOOK 08 — Personality Nudges
+File: 08_Personality_Nudges.ipynb
+================================================================================
+
+What happened
+  - Big Five traits (Extraversion, Agreeableness, …) at Low/Medium/High
+  - Converted evidence-backed tendencies into small ordinal nudges (−1 / +1)
+  - Target soft properties only, e.g.:
+      information density, recommendation strength, visual richness, …
+  - Explicit design rule: personality NEVER replaces categorical UI choices
+    (navigation type, product card type, etc.)
+
+Why it matters
+  Traits refine style; they do not redesign the interface.
+
+Main outputs
+  - data/outputs/trait_modifiers.json
+  - reports/PersonalityNudges/*
+  - (website often uses trait_lookup.json)
+
+
+================================================================================
+NOTEBOOK 09 — Adaptive Repository
+File: 09_Adaptive_Repository.ipynb
+================================================================================
+
+What happened
+  - Assembled everything into one organized adaptive repository:
+      defaults + persona overrides + mood overrides + trait modifiers
+  - Built lookup indexes and validation / statistics
+  - No LLM, no new inference — packaging + checking only
+
+Why it matters
+  Single place the website (or Notebook 10) reads from.
+
+Main outputs
+  - data/outputs/adaptive_repository/  (JSON + indexes + stats)
+  - reports/AdaptiveRepository/repository_summary.xlsx
+  - Copied/used under smartshop/src/guidelines/ for the live site
+
+
+================================================================================
+NOTEBOOK 10 — Adaptive Decision Engine (Simulation)
+File: 10_Adaptive_Decision_Engine.ipynb
+================================================================================
+
+What happened
+  - Simulated the runtime engine BEFORE React integration
+  - Pipeline order:
+      1. Detect device
+      2. Load global defaults
+      3. Load desktop OR mobile defaults
+      4. Apply persona overrides
+      5. Apply mood overrides (precedence on conflicts)
+      6. Apply personality nudges
+      7. Produce Final UI Configuration + adaptation log
+  - Ran example scenarios + batch of random users
+  - Validated layering / exports
+
+Why it matters
+  Proves the JSON rules assemble correctly. The live SmartShop
+  AdaptiveEngine.generate(context) follows the same logic.
+
+Main outputs
+  - data/outputs/adaptive_engine/final_ui_configuration.json
+  - data/outputs/adaptive_engine/adaptation_log.json
+  - reports/AdaptiveDecisionEngine/*
+
+
+================================================================================
+HOW THIS CONNECTS TO THE WEBSITE
+================================================================================
+
+Survey notebooks (01–10)  →  verified JSON guidelines
+        │
+        ▼
+smartshop/src/guidelines/*.json
+        │
+        ▼
+Context Builder → Adaptive Engine → Final UI Configuration
+        │
+        ▼
+UI Adapter / variant selection on the e-commerce site
+(LLM only offline for component variants — not for deciding UI)
+
+
+================================================================================
+WHAT WAS *NOT* DONE IN THESE NOTEBOOKS
+================================================================================
+
+  - LLM did not invent UI guidelines
+  - Notebooks did not generate React components (that is website / LLM layer)
+  - Personality did not replace categorical UI tokens
+
+
+================================================================================
+OPTIONAL RELATED NOTEBOOK
+================================================================================
+
+There may also be a coverage audit notebook (Persona × Mood × Device sample
+sizes). It explains why some profiles have few overrides: too few respondents
+in that cell — not a failure of cleaning.
+
+
+================================================================================
+End of guideline-extraction notebook summary
+================================================================================

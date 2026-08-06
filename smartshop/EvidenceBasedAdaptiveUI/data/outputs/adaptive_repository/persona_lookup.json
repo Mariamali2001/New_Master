@@ -3,27 +3,18 @@
     "n_overrides": 7,
     "ui_elements": [
       "color_theme_pref",
+      "desktop_grid_pref",
       "desktop_navigation",
+      "desktop_price_display",
       "desktop_review_display",
-      "font_style_pref",
       "form_field_style",
-      "mobile_sticky_header",
       "urgency_pref"
     ],
     "overrides": {
-      "font_style_pref": {
-        "value": "1. Modern Sans-serif (Clean, contemporary fonts like Arial or Helvetica)",
-        "confidence": 0.3,
-        "support": 0.045,
-        "evidence": [
-          "Statistics",
-          "Random Forest"
-        ]
-      },
       "color_theme_pref": {
         "value": "Vibrant Bold (Bright, energetic colors - exciting and dynamic)",
-        "confidence": 0.3,
-        "support": 0.045,
+        "confidence": 0.277778,
+        "support": 0.044643,
         "evidence": [
           "Statistics",
           "Random Forest",
@@ -32,17 +23,28 @@
       },
       "urgency_pref": {
         "value": "None (I find these annoying and manipulative)",
-        "confidence": 0.333333,
-        "support": 0.05,
+        "confidence": 0.277778,
+        "support": 0.044643,
         "evidence": [
           "Statistics",
-          "Random Forest"
+          "Random Forest",
+          "SHAP"
         ]
       },
       "form_field_style": {
         "value": "Outlined (Border around the field)",
-        "confidence": 0.3,
-        "support": 0.045,
+        "confidence": 0.277778,
+        "support": 0.044643,
+        "evidence": [
+          "Statistics",
+          "Random Forest",
+          "SHAP"
+        ]
+      },
+      "desktop_grid_pref": {
+        "value": "2 Columns (Large product images, fewer items per row)",
+        "confidence": 0.277778,
+        "support": 0.044643,
         "evidence": [
           "Statistics",
           "Random Forest",
@@ -52,7 +54,16 @@
       "desktop_navigation": {
         "value": "Mega Menu (Dropdown with images and subcategories)",
         "confidence": 0.333333,
-        "support": 0.05,
+        "support": 0.053571,
+        "evidence": [
+          "Random Forest",
+          "SHAP"
+        ]
+      },
+      "desktop_price_display": {
+        "value": "Strike-through Original (Shows original price crossed out with sale price)",
+        "confidence": 0.305556,
+        "support": 0.049107,
         "evidence": [
           "Statistics",
           "Random Forest",
@@ -61,46 +72,41 @@
       },
       "desktop_review_display": {
         "value": "All Paginated (Show all reviews with pagination)",
-        "confidence": 0.566667,
-        "support": 0.085,
+        "confidence": 0.5,
+        "support": 0.080357,
         "evidence": [
           "Statistics",
           "Random Forest"
-        ]
-      },
-      "mobile_sticky_header": {
-        "value": "No (Header scrolls away with content)",
-        "confidence": 0.533333,
-        "support": 0.08,
-        "evidence": [
-          "Statistics",
-          "Random Forest",
-          "SHAP"
         ]
       }
     }
   },
   "Deal Hunter": {
-    "n_overrides": 3,
+    "n_overrides": 8,
     "ui_elements": [
       "checkout_style",
       "color_theme_pref",
+      "desktop_filter_location",
+      "desktop_grid_pref",
+      "desktop_image_text_ratio",
+      "desktop_navigation",
+      "desktop_price_display",
       "font_style_pref"
     ],
     "overrides": {
       "font_style_pref": {
         "value": "3. Rounded Friendly (Soft, approachable fonts with rounded edges)",
         "confidence": 0.5,
-        "support": 0.06,
+        "support": 0.071429,
         "evidence": [
           "Statistics",
-          "Random Forest"
+          "SHAP"
         ]
       },
       "color_theme_pref": {
         "value": "Cool Blues (Blues and grays - calm and trustworthy)",
-        "confidence": 0.333333,
-        "support": 0.04,
+        "confidence": 0.3125,
+        "support": 0.044643,
         "evidence": [
           "Statistics",
           "Random Forest",
@@ -109,59 +115,27 @@
       },
       "checkout_style": {
         "value": "Progress Bar (Multi step with visual progress indicator)",
-        "confidence": 0.291667,
-        "support": 0.035,
+        "confidence": 0.34375,
+        "support": 0.049107,
         "evidence": [
-          "Statistics",
-          "Random Forest"
+          "Random Forest",
+          "SHAP"
         ]
-      }
-    }
-  },
-  "Impulsive Buyer": {
-    "n_overrides": 6,
-    "ui_elements": [
-      "checkout_style",
-      "color_theme_pref",
-      "desktop_navigation",
-      "desktop_search_visibility",
-      "form_field_style",
-      "product_desc_length"
-    ],
-    "overrides": {
-      "color_theme_pref": {
-        "value": "Warm Earthy (Browns, beiges, warm oranges - natural and cozy)",
-        "confidence": 0.392857,
-        "support": 0.055,
+      },
+      "desktop_grid_pref": {
+        "value": "4 Columns (Compact view, many items visible at once)",
+        "confidence": 0.34375,
+        "support": 0.049107,
         "evidence": [
           "Statistics",
           "Random Forest",
           "SHAP"
         ]
       },
-      "checkout_style": {
-        "value": "Progress Bar (Multi step with visual progress indicator)",
-        "confidence": 0.392857,
-        "support": 0.055,
-        "evidence": [
-          "Statistics",
-          "Random Forest"
-        ]
-      },
-      "form_field_style": {
-        "value": "Outlined (Border around the field)",
-        "confidence": 0.285714,
-        "support": 0.04,
-        "evidence": [
-          "Statistics",
-          "Random Forest",
-          "SHAP"
-        ]
-      },
-      "product_desc_length": {
-        "value": "Moderate (Key details with option to expand)",
-        "confidence": 0.285714,
-        "support": 0.04,
+      "desktop_image_text_ratio": {
+        "value": "Balanced (50% images, 50% text - equal emphasis)",
+        "confidence": 0.53125,
+        "support": 0.075893,
         "evidence": [
           "Statistics",
           "Random Forest",
@@ -169,53 +143,113 @@
         ]
       },
       "desktop_navigation": {
-        "value": "Mega Menu (Dropdown with images and subcategories)",
-        "confidence": 0.321429,
-        "support": 0.045,
+        "value": "Sidebar (Permanent navigation panel on the left)",
+        "confidence": 0.34375,
+        "support": 0.049107,
+        "evidence": [
+          "Random Forest",
+          "SHAP"
+        ]
+      },
+      "desktop_price_display": {
+        "value": "With Comparison (Shows similar products' prices)",
+        "confidence": 0.40625,
+        "support": 0.058036,
         "evidence": [
           "Statistics",
           "Random Forest",
           "SHAP"
         ]
       },
-      "desktop_search_visibility": {
-        "value": "Collapsible (Search bar that expands when clicked)",
-        "confidence": 0.428571,
-        "support": 0.06,
+      "desktop_filter_location": {
+        "value": "Top Bar (Filters displayed across the top)",
+        "confidence": 0.4375,
+        "support": 0.0625,
+        "evidence": [
+          "Random Forest",
+          "SHAP"
+        ]
+      }
+    }
+  },
+  "Impulsive Buyer": {
+    "n_overrides": 4,
+    "ui_elements": [
+      "checkout_style",
+      "color_theme_pref",
+      "desktop_price_display",
+      "form_field_style"
+    ],
+    "overrides": {
+      "color_theme_pref": {
+        "value": "Warm Earthy (Browns, beiges, warm oranges - natural and cozy)",
+        "confidence": 0.366667,
+        "support": 0.049107,
         "evidence": [
           "Statistics",
+          "Random Forest",
+          "SHAP"
+        ]
+      },
+      "checkout_style": {
+        "value": "Progress Bar (Multi step with visual progress indicator)",
+        "confidence": 0.4,
+        "support": 0.053571,
+        "evidence": [
+          "Random Forest",
+          "SHAP"
+        ]
+      },
+      "form_field_style": {
+        "value": "Outlined (Border around the field)",
+        "confidence": 0.266667,
+        "support": 0.035714,
+        "evidence": [
+          "Statistics",
+          "Random Forest",
+          "SHAP"
+        ]
+      },
+      "desktop_price_display": {
+        "value": "Bold Large (Price is the most prominent element)",
+        "confidence": 0.333333,
+        "support": 0.044643,
+        "evidence": [
+          "Statistics",
+          "Random Forest",
           "SHAP"
         ]
       }
     }
   },
   "Loyal Customer": {
-    "n_overrides": 9,
+    "n_overrides": 10,
     "ui_elements": [
       "background_pref",
       "color_theme_pref",
+      "desktop_filter_location",
       "desktop_image_text_ratio",
-      "desktop_whitespace",
       "font_style_pref",
+      "form_field_style",
       "hero_banner_size",
+      "mobile_product_card",
       "mobile_review_display",
-      "product_desc_length",
-      "urgency_pref"
+      "social_proof_display"
     ],
     "overrides": {
       "font_style_pref": {
         "value": "3. Rounded Friendly (Soft, approachable fonts with rounded edges)",
-        "confidence": 0.409091,
-        "support": 0.045,
+        "confidence": 0.391304,
+        "support": 0.040179,
         "evidence": [
           "Statistics",
-          "Random Forest"
+          "SHAP"
         ]
       },
       "color_theme_pref": {
-        "value": "Cool Blues (Blues and grays - calm and trustworthy)",
-        "confidence": 0.272727,
-        "support": 0.03,
+        "value": "Warm Earthy (Browns, beiges, warm oranges - natural and cozy)",
+        "confidence": 0.304348,
+        "support": 0.03125,
         "evidence": [
           "Statistics",
           "Random Forest",
@@ -224,8 +258,8 @@
       },
       "background_pref": {
         "value": "Dark (Dark gray or black background)",
-        "confidence": 0.318182,
-        "support": 0.035,
+        "confidence": 0.304348,
+        "support": 0.03125,
         "evidence": [
           "Statistics",
           "Random Forest"
@@ -233,26 +267,26 @@
       },
       "hero_banner_size": {
         "value": "Small Strip (Thin banner across the top)",
-        "confidence": 0.5,
-        "support": 0.055,
-        "evidence": [
-          "Statistics",
-          "SHAP"
-        ]
-      },
-      "urgency_pref": {
-        "value": "Countdown Timers (Show \"Sale ends in 2 hours\")",
-        "confidence": 0.318182,
-        "support": 0.035,
+        "confidence": 0.478261,
+        "support": 0.049107,
         "evidence": [
           "Statistics",
           "Random Forest"
         ]
       },
-      "product_desc_length": {
-        "value": "Detailed Full (All specifications and information visible)",
-        "confidence": 0.363636,
-        "support": 0.04,
+      "social_proof_display": {
+        "value": "Customer Reviews (Written reviews with ratings)",
+        "confidence": 0.391304,
+        "support": 0.040179,
+        "evidence": [
+          "Random Forest",
+          "SHAP"
+        ]
+      },
+      "form_field_style": {
+        "value": "Filled Background (Shaded background, no border)",
+        "confidence": 0.304348,
+        "support": 0.03125,
         "evidence": [
           "Statistics",
           "Random Forest",
@@ -261,28 +295,38 @@
       },
       "desktop_image_text_ratio": {
         "value": "Balanced (50% images, 50% text - equal emphasis)",
-        "confidence": 0.5,
-        "support": 0.055,
-        "evidence": [
-          "Statistics",
-          "Random Forest"
-        ]
-      },
-      "desktop_whitespace": {
-        "value": "Spacious (clean and uncluttered)",
-        "confidence": 0.545455,
-        "support": 0.06,
+        "confidence": 0.521739,
+        "support": 0.053571,
         "evidence": [
           "Statistics",
           "Random Forest",
           "SHAP"
         ]
       },
+      "desktop_filter_location": {
+        "value": "Top Bar (Filters displayed across the top)",
+        "confidence": 0.478261,
+        "support": 0.049107,
+        "evidence": [
+          "Random Forest",
+          "SHAP"
+        ]
+      },
+      "mobile_product_card": {
+        "value": "Minimal Clean (Simple image, name, price - no clutter)",
+        "confidence": 0.521739,
+        "support": 0.053571,
+        "evidence": [
+          "Random Forest",
+          "SHAP"
+        ]
+      },
       "mobile_review_display": {
         "value": "Summary Only (Average rating and total count)",
-        "confidence": 0.545455,
-        "support": 0.06,
+        "confidence": 0.521739,
+        "support": 0.053571,
         "evidence": [
+          "Statistics",
           "Random Forest",
           "SHAP"
         ]
@@ -290,27 +334,58 @@
     }
   },
   "Minimalist": {
-    "n_overrides": 2,
+    "n_overrides": 5,
     "ui_elements": [
+      "checkout_style",
       "desktop_image_text_ratio",
-      "desktop_search_visibility"
+      "desktop_product_card",
+      "mobile_product_card",
+      "social_proof_display"
     ],
     "overrides": {
-      "desktop_image_text_ratio": {
-        "value": "Balanced (50% images, 50% text - equal emphasis)",
-        "confidence": 0.454545,
-        "support": 0.1,
+      "social_proof_display": {
+        "value": "Customer Reviews (Written reviews with ratings)",
+        "confidence": 0.469388,
+        "support": 0.102679,
         "evidence": [
-          "Statistics",
-          "Random Forest"
+          "Random Forest",
+          "SHAP"
         ]
       },
-      "desktop_search_visibility": {
-        "value": "Collapsible (Search bar that expands when clicked)",
-        "confidence": 0.454545,
-        "support": 0.1,
+      "checkout_style": {
+        "value": "Progress Bar (Multi step with visual progress indicator)",
+        "confidence": 0.367347,
+        "support": 0.080357,
+        "evidence": [
+          "Random Forest",
+          "SHAP"
+        ]
+      },
+      "desktop_image_text_ratio": {
+        "value": "Balanced (50% images, 50% text - equal emphasis)",
+        "confidence": 0.489796,
+        "support": 0.107143,
         "evidence": [
           "Statistics",
+          "Random Forest",
+          "SHAP"
+        ]
+      },
+      "desktop_product_card": {
+        "value": "Minimal Clean (Simple image, name, price - no clutter)",
+        "confidence": 0.326531,
+        "support": 0.071429,
+        "evidence": [
+          "Random Forest",
+          "SHAP"
+        ]
+      },
+      "mobile_product_card": {
+        "value": "Minimal Clean (Simple image, name, price - no clutter)",
+        "confidence": 0.346939,
+        "support": 0.075893,
+        "evidence": [
+          "Random Forest",
           "SHAP"
         ]
       }
@@ -329,8 +404,8 @@
     "overrides": {
       "color_theme_pref": {
         "value": "Vibrant Bold (Bright, energetic colors - exciting and dynamic)",
-        "confidence": 0.230769,
-        "support": 0.06,
+        "confidence": 0.222222,
+        "support": 0.053571,
         "evidence": [
           "Statistics",
           "Random Forest",
@@ -339,27 +414,26 @@
       },
       "recommendation_type": {
         "value": "Category based (Similar items from the same category)",
-        "confidence": 0.384615,
-        "support": 0.1,
-        "evidence": [
-          "Statistics",
-          "Random Forest",
-          "SHAP"
-        ]
-      },
-      "checkout_style": {
-        "value": "Progress Bar (Multi step with visual progress indicator)",
-        "confidence": 0.384615,
-        "support": 0.1,
+        "confidence": 0.37037,
+        "support": 0.089286,
         "evidence": [
           "Statistics",
           "Random Forest"
         ]
       },
+      "checkout_style": {
+        "value": "Progress Bar (Multi step with visual progress indicator)",
+        "confidence": 0.388889,
+        "support": 0.09375,
+        "evidence": [
+          "Random Forest",
+          "SHAP"
+        ]
+      },
       "form_field_style": {
         "value": "Filled Background (Shaded background, no border)",
-        "confidence": 0.25,
-        "support": 0.065,
+        "confidence": 0.240741,
+        "support": 0.058036,
         "evidence": [
           "Statistics",
           "Random Forest",
@@ -368,18 +442,17 @@
       },
       "desktop_navigation": {
         "value": "Combination of top bar and dropdowns",
-        "confidence": 0.326923,
-        "support": 0.085,
+        "confidence": 0.314815,
+        "support": 0.075893,
         "evidence": [
-          "Statistics",
           "Random Forest",
           "SHAP"
         ]
       },
       "desktop_review_display": {
         "value": "All Paginated (Show all reviews with pagination)",
-        "confidence": 0.423077,
-        "support": 0.11,
+        "confidence": 0.444444,
+        "support": 0.107143,
         "evidence": [
           "Statistics",
           "Random Forest"

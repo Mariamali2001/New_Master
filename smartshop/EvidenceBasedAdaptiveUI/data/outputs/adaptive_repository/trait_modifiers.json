@@ -16,7 +16,7 @@
       "nudges": {
         "recommendation_strength": -1
       },
-      "confidence": 0.323285
+      "confidence": 0.313547
     },
     {
       "trait": "Extraversion",
@@ -25,15 +25,7 @@
         "recommendation_strength": -1,
         "information_density": -1
       },
-      "confidence": 0.606754
-    },
-    {
-      "trait": "Agreeableness",
-      "level": "Low",
-      "nudges": {
-        "recommendation_strength": 1
-      },
-      "confidence": 0.633345
+      "confidence": 0.626089
     },
     {
       "trait": "Agreeableness",
@@ -41,15 +33,16 @@
       "nudges": {
         "recommendation_strength": 1
       },
-      "confidence": 0.326507
+      "confidence": 0.30661
     },
     {
       "trait": "Conscientiousness",
       "level": "Low",
       "nudges": {
+        "whitespace": -1,
         "information_density": -1
       },
-      "confidence": 0.258723
+      "confidence": 0.557937
     },
     {
       "trait": "Conscientiousness",
@@ -57,7 +50,15 @@
       "nudges": {
         "information_density": 1
       },
-      "confidence": 0.272673
+      "confidence": 0.319887
+    },
+    {
+      "trait": "Neuroticism",
+      "level": "Medium",
+      "nudges": {
+        "recommendation_strength": -1
+      },
+      "confidence": 0.816638
     },
     {
       "trait": "Neuroticism",
@@ -67,7 +68,7 @@
         "information_density": -1,
         "whitespace": 1
       },
-      "confidence": 0.487196
+      "confidence": 0.496822
     },
     {
       "trait": "Openness",
@@ -76,7 +77,7 @@
         "information_density": 1,
         "visual_richness": -1
       },
-      "confidence": 0.556878
+      "confidence": 0.521064
     },
     {
       "trait": "Openness",
@@ -84,7 +85,7 @@
       "nudges": {
         "visual_richness": 1
       },
-      "confidence": 0.405088
+      "confidence": 0.408289
     }
   ]
 }

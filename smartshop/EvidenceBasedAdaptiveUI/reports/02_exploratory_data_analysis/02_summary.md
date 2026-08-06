@@ -1,6 +1,6 @@
 # Notebook 02 Summary
 
-- Rows: 200
+- Rows: 224
 - Columns: 79
 - Demographics plotted: 3
 - Shopping variables plotted: 6

@@ -41,9 +41,9 @@ export function LoginForm() {
         "@/lib/experiment/clearAdaptive"
       );
       clearAdaptiveExperiment();
-      // Land on full shop catalog (not search results)
+      // Land on home (not shop/filters); browse timer still starts
       setTimeout(() => {
-        window.location.href = "/shop?experiment=browse";
+        window.location.href = "/?experiment=browse";
       }, 800);
     } catch (error) {
       setStatus({

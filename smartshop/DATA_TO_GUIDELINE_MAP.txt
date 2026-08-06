@@ -1,0 +1,396 @@
+================================================================================================
+DATA → GUIDELINE MAP
+Survey CSV columns ↔ Adaptive Engine JSON keys (1:1)
+Source CSV: EvidenceBasedAdaptiveUI/data/processed/clean_dataset.csv  (N=200)
+JSON dir:   smartshop/src/guidelines/
+================================================================================================
+
+How to read:
+  Survey column  = field name in clean_dataset.csv
+  JSON file      = which repository file stores the decision
+  JSON key       = token key used by Adaptive Engine / Final UI Configuration
+  Survey majority= most common answer in the CSV (with %)
+  JSON default   = value currently stored in defaults files
+  Strength       = STRONG (≥45%) / MODERATE (≥30%) / WEAK/SPLIT (<30%)
+
+------------------------------------------------------------------------------------------------
+1) GLOBAL DEFAULTS  →  global_defaults.json
+   Layer in Adaptive Engine: after load repositories, first merge step
+------------------------------------------------------------------------------------------------
+Survey column                Strength     Survey majority %  JSON key                     Match?
+---------------------------- ------------ ------------------ ---------------------------- ------
+font_style_pref              MODERATE      36.5% (73/200)    font_style_pref              YES
+    Survey #1: 2. Classic Serif (Traditional fonts with decorative strokes like Times New Roman)
+    JSON value: 2. Classic Serif (Traditional fonts with decorative strokes like Times New Roman)
+    JSON meta:  percentage=36.5 count=73
+
+font_size_pref               STRONG        48.0% (96/200)    font_size_pref               YES
+    Survey #1: 3. Large (16-18px - Easy to read, comfortable)
+    JSON value: 3. Large (16-18px - Easy to read, comfortable)
+    JSON meta:  percentage=48.0 count=96
+
+color_theme_pref             WEAK/SPLIT    24.5% (49/200)    color_theme_pref             YES
+    Survey #1: Minimalist Black & White (Clean, high contrast, professional)
+    JSON value: Minimalist Black & White (Clean, high contrast, professional)
+    JSON meta:  percentage=24.5 count=49
+
+accent_color_pref            STRONG        60.5% (121/200)   accent_color_pref            YES
+    Survey #1: Blue (Trustworthy, professional, calm)
+    JSON value: Blue (Trustworthy, professional, calm)
+    JSON meta:  percentage=60.5 count=121
+
+background_pref              MODERATE      36.0% (72/200)    background_pref              YES
+    Survey #1: Cream/Off-white (Warm, comfortable, paper-like)
+    JSON value: Cream/Off-white (Warm, comfortable, paper-like)
+    JSON meta:  percentage=36.0 count=72
+
+whitespace_pref              STRONG        73.5% (147/200)   whitespace_pref              YES
+    Survey #1: Balanced (Moderate spacing - comfortable middle ground)
+    JSON value: Balanced (Moderate spacing - comfortable middle ground)
+    JSON meta:  percentage=73.5 count=147
+
+button_style_pref            MODERATE      41.5% (83/200)    button_style_pref            YES
+    Survey #1: Rounded Corners (Soft, modern rounded edges)
+    JSON value: Rounded Corners (Soft, modern rounded edges)
+    JSON meta:  percentage=41.5 count=83
+
+hero_banner_size             STRONG        53.5% (107/200)   hero_banner_size             YES
+    Survey #1: Medium Split (Takes up half the screen)
+    JSON value: Medium Split (Takes up half the screen)
+    JSON meta:  percentage=53.5 count=107
+
+recommendation_type          STRONG        47.0% (94/200)    recommendation_type          YES
+    Survey #1: Deals (Products on sale or special offers)
+    JSON value: Deals (Products on sale or special offers)
+    JSON meta:  percentage=47.0 count=94
+
+social_proof_display         MODERATE      36.5% (73/200)    social_proof_display         YES
+    Survey #1: User Photos (Photos uploaded by customers)
+    JSON value: User Photos (Photos uploaded by customers)
+    JSON meta:  percentage=36.5 count=73
+
+urgency_pref                 MODERATE      32.5% (65/200)    urgency_pref                 YES
+    Survey #1: Both (Show both stock and time based urgency)
+    JSON value: Both (Show both stock and time based urgency)
+    JSON meta:  percentage=32.5 count=65
+
+checkout_style               MODERATE      38.5% (77/200)    checkout_style               YES
+    Survey #1: One Page (All checkout steps on a single scrolling page)
+    JSON value: One Page (All checkout steps on a single scrolling page)
+    JSON meta:  percentage=38.5 count=77
+
+form_field_style             WEAK/SPLIT    24.5% (49/200)    form_field_style             YES
+    Survey #1: Rounded Border Fields (Outlined field with rounded corners)
+    JSON value: Rounded Border Fields (Outlined field with rounded corners)
+    JSON meta:  percentage=24.5 count=49
+
+product_desc_length          MODERATE      35.0% (70/200)    product_desc_length          YES
+    Survey #1: Expandable Sections (Organized into collapsible sections)
+    JSON value: Expandable Sections (Organized into collapsible sections)
+    JSON meta:  percentage=35.0 count=70
+
+------------------------------------------------------------------------------------------------
+2) DESKTOP DEFAULTS  →  desktop_defaults.json
+   Layer: when Context.device == desktop
+------------------------------------------------------------------------------------------------
+desktop_grid_pref                MODERATE      33.5%  JSON key=desktop_grid_pref  [YES]
+    Survey #1: 3 Columns (Balanced view, moderate item size)
+    JSON value: 3 Columns (Balanced view, moderate item size)
+
+desktop_info_density             STRONG        72.5%  JSON key=desktop_info_density  [YES]
+    Survey #1: Moderate (Balanced - some details visible, click for more)
+    JSON value: Moderate (Balanced - some details visible, click for more)
+
+desktop_image_text_ratio         STRONG        53.5%  JSON key=desktop_image_text_ratio  [YES]
+    Survey #1: Image-focused (80% images, 20% text - highly visual)
+    JSON value: Image-focused (80% images, 20% text - highly visual)
+
+desktop_whitespace               STRONG        57.0%  JSON key=desktop_whitespace  [YES]
+    Survey #1: Balanced
+    JSON value: Balanced
+
+desktop_navigation               WEAK/SPLIT    29.5%  JSON key=desktop_navigation  [YES]
+    Survey #1: Top Bar (Categories always visible across the top)
+    JSON value: Top Bar (Categories always visible across the top)
+
+desktop_search_visibility        MODERATE      43.0%  JSON key=desktop_search_visibility  [YES]
+    Survey #1: Always Visible Top (Large, prominent search bar always shown)
+    JSON value: Always Visible Top (Large, prominent search bar always shown)
+
+desktop_category_display         MODERATE      42.5%  JSON key=desktop_category_display  [YES]
+    Survey #1: Visual Grid (Category tiles with images)
+    JSON value: Visual Grid (Category tiles with images)
+
+desktop_product_card             MODERATE      30.0%  JSON key=desktop_product_card  [YES]
+    Survey #1: Info Rich (Lots of details, ratings, specs visible)
+    JSON value: Info Rich (Lots of details, ratings, specs visible)
+
+desktop_price_display            WEAK/SPLIT    26.5%  JSON key=desktop_price_display  [YES]
+    Survey #1: With Savings Highlighted (Shows discount amount prominently)
+    JSON value: With Savings Highlighted (Shows discount amount prominently)
+
+desktop_filter_location          STRONG        45.5%  JSON key=desktop_filter_location  [YES]
+    Survey #1: Sidebar Left (Permanent filter panel on the left side)
+    JSON value: Sidebar Left (Permanent filter panel on the left side)
+
+desktop_persistent_filters       STRONG        75.0%  JSON key=desktop_persistent_filters  [YES]
+    Survey #1: Yes (Always visible sidebar with filters)
+    JSON value: Yes (Always visible sidebar with filters)
+
+desktop_quick_view               STRONG        48.0%  JSON key=desktop_quick_view  [YES]
+    Survey #1: Sidebar Slide (Details slide in from the right)
+    JSON value: Sidebar Slide (Details slide in from the right)
+
+desktop_review_display           MODERATE      39.0%  JSON key=desktop_review_display  [YES]
+    Survey #1: Recent 3- 5 (Show a few recent reviews)
+    JSON value: Recent 3- 5 (Show a few recent reviews)
+
+------------------------------------------------------------------------------------------------
+3) MOBILE DEFAULTS  →  mobile_defaults.json
+   Layer: when Context.device == mobile
+------------------------------------------------------------------------------------------------
+mobile_grid_pref                 STRONG        47.0%  JSON key=mobile_grid_pref  [YES]
+    Survey #1: Compact stacked cards (more products per screen)
+    JSON value: Compact stacked cards (more products per screen)
+
+mobile_info_density              STRONG        68.5%  JSON key=mobile_info_density  [YES]
+    Survey #1: Moderate (Balanced - some details visible, click for more)
+    JSON value: Moderate (Balanced - some details visible, click for more)
+
+mobile_image_text_ratio          STRONG        83.0%  JSON key=mobile_image_text_ratio  [YES]
+    Survey #1: Balanced (50% images, 50% text - equal emphasis)
+    JSON value: Balanced (50% images, 50% text - equal emphasis)
+
+mobile_whitespace                STRONG        85.0%  JSON key=mobile_whitespace  [YES]
+    Survey #1: Balanced
+    JSON value: Balanced
+
+mobile_navigation                STRONG        50.0%  JSON key=mobile_navigation  [YES]
+    Survey #1: Bottom Nav (Navigation bar at the bottom - mobile style)
+    JSON value: Bottom Nav (Navigation bar at the bottom - mobile style)
+
+mobile_search_visibility         MODERATE      39.5%  JSON key=mobile_search_visibility  [YES]
+    Survey #1: Collapsible (Search bar that expands when clicked)
+    JSON value: Collapsible (Search bar that expands when clicked)
+
+mobile_category_display          MODERATE      42.5%  JSON key=mobile_category_display  [YES]
+    Survey #1: Dropdown Menu (Text-based dropdown list)
+    JSON value: Dropdown Menu (Text-based dropdown list)
+
+mobile_product_card              MODERATE      39.0%  JSON key=mobile_product_card  [YES]
+    Survey #1: Info Rich (Lots of details, ratings, specs visible)
+    JSON value: Info Rich (Lots of details, ratings, specs visible)
+
+mobile_price_display             STRONG        62.5%  JSON key=mobile_price_display  [YES]
+    Survey #1: Strike-through Original (Shows original price crossed out with sale price)
+    JSON value: Strike-through Original (Shows original price crossed out with sale price)
+
+mobile_filter_location           STRONG        58.0%  JSON key=mobile_filter_location  [YES]
+    Survey #1: Drawer Overlay (Slides in from the side when clicked)
+    JSON value: Drawer Overlay (Slides in from the side when clicked)
+
+mobile_quick_view                STRONG        52.0%  JSON key=mobile_quick_view  [YES]
+    Survey #1: Slide-Up Panel (Preview product details in a slide-up panel without leaving the product…
+    JSON value: Slide-Up Panel (Preview product details in a slide-up panel without leaving the product…
+
+mobile_review_display            STRONG        53.0%  JSON key=mobile_review_display  [YES]
+    Survey #1: Collapsible Sections (Reviews can be expanded or collapsed within the product details)
+    JSON value: Collapsible Sections (Reviews can be expanded or collapsed within the product details)
+
+mobile_sticky_header             STRONG        64.5%  JSON key=mobile_sticky_header  [YES]
+    Survey #1: Yes (Header stays at top while scrolling)
+    JSON value: Yes (Header stays at top while scrolling)
+
+mobile_touch_size                STRONG        55.5%  JSON key=mobile_touch_size  [YES]
+    Survey #1: Standard (Normal size, more content visible)
+    JSON value: Standard (Normal size, more content visible)
+
+------------------------------------------------------------------------------------------------
+4) PERSONA OVERRIDES  →  persona_lookup.json
+   Layer: after device defaults; only keys listed under overrides{} are changed
+   Survey column for persona: primary_persona
+------------------------------------------------------------------------------------------------
+
+Persona label mapping (survey text → JSON key):
+  [ 52/200] survey → JSON persona key: Researcher
+           The Researcher (I thoroughly research products, read reviews, compare options, and take m…
+  [ 44/200] survey → JSON persona key: Minimalist
+           The Minimalist (I want simple, efficient shopping. Show me what I need with minimal fuss)
+  [ 30/200] survey → JSON persona key: Browser
+           The Browser (I enjoy browsing and discovering products, often without immediate purchase …
+  [ 28/200] survey → JSON persona key: Impulsive Buyer
+           The Impulsive Buyer (I make quick decisions based on intuition and emotion. If I like it,…
+  [ 24/200] survey → JSON persona key: Deal Hunter
+           The Deal Hunter (I'm motivated by sales, discounts, and getting the best value. I wait fo…
+  [ 22/200] survey → JSON persona key: Loyal Customer
+           The Loyal Customer (I stick with brands and stores I trust. I value consistency and relia…
+
+Override keys per persona (JSON keys that differ from defaults):
+
+  Browser  (n_overrides=7)
+    - font_style_pref: 1. Modern Sans-serif (Clean, contemporary fonts like Arial or Helveti…  conf=0.3
+    - color_theme_pref: Vibrant Bold (Bright, energetic colors - exciting and dynamic)  conf=0.3
+    - urgency_pref: None (I find these annoying and manipulative)  conf=0.333333
+    - form_field_style: Outlined (Border around the field)  conf=0.3
+    - desktop_navigation: Mega Menu (Dropdown with images and subcategories)  conf=0.333333
+    - desktop_review_display: All Paginated (Show all reviews with pagination)  conf=0.566667
+    - mobile_sticky_header: No (Header scrolls away with content)  conf=0.533333
+
+  Deal Hunter  (n_overrides=3)
+    - font_style_pref: 3. Rounded Friendly (Soft, approachable fonts with rounded edges)  conf=0.5
+    - color_theme_pref: Cool Blues (Blues and grays - calm and trustworthy)  conf=0.333333
+    - checkout_style: Progress Bar (Multi step with visual progress indicator)  conf=0.291667
+
+  Impulsive Buyer  (n_overrides=6)
+    - color_theme_pref: Warm Earthy (Browns, beiges, warm oranges - natural and cozy)  conf=0.392857
+    - checkout_style: Progress Bar (Multi step with visual progress indicator)  conf=0.392857
+    - form_field_style: Outlined (Border around the field)  conf=0.285714
+    - product_desc_length: Moderate (Key details with option to expand)  conf=0.285714
+    - desktop_navigation: Mega Menu (Dropdown with images and subcategories)  conf=0.321429
+    - desktop_search_visibility: Collapsible (Search bar that expands when clicked)  conf=0.428571
+
+  Loyal Customer  (n_overrides=9)
+    - font_style_pref: 3. Rounded Friendly (Soft, approachable fonts with rounded edges)  conf=0.409091
+    - color_theme_pref: Cool Blues (Blues and grays - calm and trustworthy)  conf=0.272727
+    - background_pref: Dark (Dark gray or black background)  conf=0.318182
+    - hero_banner_size: Small Strip (Thin banner across the top)  conf=0.5
+    - urgency_pref: Countdown Timers (Show "Sale ends in 2 hours")  conf=0.318182
+    - product_desc_length: Detailed Full (All specifications and information visible)  conf=0.363636
+    - desktop_image_text_ratio: Balanced (50% images, 50% text - equal emphasis)  conf=0.5
+    - desktop_whitespace: Spacious (clean and uncluttered)  conf=0.545455
+    - mobile_review_display: Summary Only (Average rating and total count)  conf=0.545455
+
+  Minimalist  (n_overrides=2)
+    - desktop_image_text_ratio: Balanced (50% images, 50% text - equal emphasis)  conf=0.454545
+    - desktop_search_visibility: Collapsible (Search bar that expands when clicked)  conf=0.454545
+
+  Researcher  (n_overrides=6)
+    - color_theme_pref: Vibrant Bold (Bright, energetic colors - exciting and dynamic)  conf=0.230769
+    - recommendation_type: Category based (Similar items from the same category)  conf=0.384615
+    - checkout_style: Progress Bar (Multi step with visual progress indicator)  conf=0.384615
+    - form_field_style: Filled Background (Shaded background, no border)  conf=0.25
+    - desktop_navigation: Combination of top bar and dropdowns  conf=0.326923
+    - desktop_review_display: All Paginated (Show all reviews with pagination)  conf=0.423077
+
+------------------------------------------------------------------------------------------------
+5) MOOD OVERRIDES  →  mood_lookup.json
+   Layer: AFTER persona (wins on same key)
+   Survey column: current_mood  |  Website: detected mood → guideline mood bridge
+------------------------------------------------------------------------------------------------
+  Survey mood 'Neutral': 77/200 (38.5%) → JSON key 'Neutral'
+  Survey mood 'Relaxed': 39/200 (19.5%) → JSON key 'Relaxed'
+  Survey mood 'Stressed': 29/200 (14.5%) → JSON key 'Stressed'
+  Survey mood 'Bored': 18/200 (9.0%) → JSON key 'Bored'
+  Survey mood 'Happy': 17/200 (8.5%) → JSON key 'Happy'
+  Survey mood 'Excited': 10/200 (5.0%) → JSON key 'Excited'
+  Survey mood 'Sad': 6/200 (3.0%) → JSON key 'Sad'
+  Survey mood 'Frustrated': 4/200 (2.0%) → JSON key 'Frustrated'
+
+Override keys per mood:
+
+  Bored  (n_overrides=4)
+    - color_theme_pref: Warm Earthy (Browns, beiges, warm oranges - natural and cozy)  conf=0.277778
+    - urgency_pref: Stock Numbers (Show "Only 3 left in stock")  conf=0.5
+    - desktop_grid_pref: 4 Columns (Compact view, many items visible at once)  conf=0.333333
+    - desktop_price_display: Bold Large (Price is the most prominent element)  conf=0.388889
+
+  Excited  (n_overrides=4)
+    - color_theme_pref: Warm Earthy (Browns, beiges, warm oranges - natural and cozy)  conf=0.5
+    - urgency_pref: Countdown Timers (Show "Sale ends in 2 hours")  conf=0.5
+    - desktop_image_text_ratio: Balanced (50% images, 50% text - equal emphasis)  conf=0.7
+    - mobile_product_card: Minimal Clean (Simple image, name, price - no clutter)  conf=0.8
+
+  Frustrated  (n_overrides=0)
+    (no overrides — engine keeps persona/device/global values)
+
+  Happy  (n_overrides=6)
+    - checkout_style: Progress Bar (Multi step with visual progress indicator)  conf=0.588235
+    - desktop_grid_pref: 2 Columns (Large product images, fewer items per row)  conf=0.352941
+    - desktop_search_visibility: Collapsible (Search bar that expands when clicked)  conf=0.764706
+    - desktop_price_display: With Comparison (Shows similar products' prices)  conf=0.411765
+    - desktop_filter_location: Top Bar (Filters displayed across the top)  conf=0.470588
+    - mobile_category_display: Visual Grid (Category tiles with images)  conf=0.352941
+
+  Neutral  (n_overrides=4)
+    - checkout_style: Progress Bar (Multi step with visual progress indicator)  conf=0.38961
+    - desktop_price_display: Strike-through Original (Shows original price crossed out with sale p…  conf=0.298701
+    - mobile_category_display: Visual Grid (Category tiles with images)  conf=0.493506
+    - mobile_product_card: Minimal Clean (Simple image, name, price - no clutter)  conf=0.38961
+
+  Relaxed  (n_overrides=4)
+    - color_theme_pref: Warm Earthy (Browns, beiges, warm oranges - natural and cozy)  conf=0.282051
+    - desktop_search_visibility: Collapsible (Search bar that expands when clicked)  conf=0.487179
+    - desktop_price_display: Strike-through Original (Shows original price crossed out with sale p…  conf=0.307692
+    - desktop_quick_view: Modal Popup (Product details appear in a centered overlay)  conf=0.410256
+
+  Sad  (n_overrides=0)
+    (no overrides — engine keeps persona/device/global values)
+
+  Stressed  (n_overrides=6)
+    - hero_banner_size: Small Strip (Thin banner across the top)  conf=0.448276
+    - urgency_pref: Stock Numbers (Show "Only 3 left in stock")  conf=0.275862
+    - desktop_grid_pref: List View (One product per row with details on the side)  conf=0.275862
+    - desktop_image_text_ratio: Balanced (50% images, 50% text - equal emphasis)  conf=0.551724
+    - mobile_product_card: Minimal Clean (Simple image, name, price - no clutter)  conf=0.448276
+    - mobile_filter_location: Bottom Sheet (Slides up from bottom   mobile style)  conf=0.482759
+
+------------------------------------------------------------------------------------------------
+6) TRAIT NUDGES  →  trait_lookup.json
+   Layer: last; NEVER replaces categorical tokens; only nudges{} deltas
+   Survey columns: Extraversion, Agreeableness, Conscientiousness, Neuroticism, Openness
+                   + *_Level (High/Medium/Low)
+------------------------------------------------------------------------------------------------
+
+  Trait JSON key: Extraversion
+    Survey Extraversion_Level distribution: Medium=110, Low=61, High=29
+    [High] nudges={'recommendation_strength': -1, 'information_density': -1}  conf=0.606754
+    [Low] nudges={'recommendation_strength': -1}  conf=0.323285
+
+  Trait JSON key: Agreeableness
+    Survey Agreeableness_Level distribution: High=94, Medium=82, Low=24
+    [High] nudges={'recommendation_strength': 1}  conf=0.326507
+    [Low] nudges={'recommendation_strength': 1}  conf=0.633345
+
+  Trait JSON key: Conscientiousness
+    Survey Conscientiousness_Level distribution: Medium=99, High=66, Low=35
+    [High] nudges={'information_density': 1}  conf=0.272673
+    [Low] nudges={'information_density': -1}  conf=0.258723
+
+  Trait JSON key: Neuroticism
+    Survey Neuroticism_Level distribution: Low=84, Medium=71, High=45
+    [High] nudges={'recommendation_strength': 1, 'information_density': -1, 'whitespace': 1}  conf=0.487196
+
+  Trait JSON key: Openness
+    Survey Openness_Level distribution: Medium=109, High=59, Low=32
+    [High] nudges={'visual_richness': 1}  conf=0.405088
+    [Low] nudges={'information_density': 1, 'visual_richness': -1}  conf=0.556878
+
+------------------------------------------------------------------------------------------------
+7) CONTEXT-ONLY SURVEY FIELDS (not UI token keys)
+   Used by Context Builder / experiment save — not merged as UI tokens
+------------------------------------------------------------------------------------------------
+  age_group / answers.age            → Context.user.age                         (Questionnaire age)
+  gender                             → Context.user.gender                      (Questionnaire gender)
+  primary_device                     → Context.device                           (detectDeviceClient() + survey)
+  primary_persona                    → Context.persona / surveyPersona          (Mapped via SURVEY_PERSONA_TO_GUIDELINE)
+  current_mood                       → Context.mood.selfReported                (Research field; live engine uses detected)
+  Extraversion..Openness scores      → Context.traits.*.score                   (TIPI continuous 1–5)
+  *_Level                            → Context.traits.*.level                   (High/Medium/Low → High/Low for lookup)
+  shopping_motivation etc.           → answers / experiment export              (Admin Excel, not Adaptive Engine tokens)
+
+------------------------------------------------------------------------------------------------
+8) ADAPTIVE ENGINE MERGE ORDER (which JSON wins)
+------------------------------------------------------------------------------------------------
+  1. global_defaults.json
+  2. desktop_defaults.json  OR  mobile_defaults.json
+  3. persona_lookup.json[persona].overrides   (explicit keys only)
+  4. mood_lookup.json[mood].overrides         (wins over persona on same key)
+  5. trait_lookup.json[trait][High|Low].nudges (additive; separate nudges map)
+
+Alternates also in folder (not used by runtime if lookup_* preferred):
+  persona_overrides.json, mood_overrides.json, trait_modifiers.json
+  See manifest.json required_for_website vs alternative_source_files
+
+================================================================================================
+End of Data → Guideline map
+================================================================================================

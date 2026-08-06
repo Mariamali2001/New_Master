@@ -8,38 +8,38 @@
   },
   "persona_overrides": {
     "personas": 6,
-    "total_overrides": 33,
+    "total_overrides": 40,
     "by_persona": {
       "Browser": 7,
-      "Deal Hunter": 3,
-      "Impulsive Buyer": 6,
-      "Loyal Customer": 9,
-      "Minimalist": 2,
+      "Deal Hunter": 8,
+      "Impulsive Buyer": 4,
+      "Loyal Customer": 10,
+      "Minimalist": 5,
       "Researcher": 6
     }
   },
   "mood_overrides": {
     "moods": 8,
-    "total_overrides": 28,
+    "total_overrides": 32,
     "by_mood": {
-      "Bored": 4,
+      "Bored": 5,
       "Excited": 4,
       "Frustrated": 0,
       "Happy": 6,
-      "Neutral": 4,
-      "Relaxed": 4,
+      "Neutral": 5,
+      "Relaxed": 6,
       "Sad": 0,
       "Stressed": 6
     }
   },
   "trait_modifiers": {
     "entries": 9,
-    "total_nudges": 13,
+    "total_nudges": 14,
     "by_trait": {
       "Extraversion": 3,
-      "Agreeableness": 2,
-      "Conscientiousness": 2,
-      "Neuroticism": 3,
+      "Agreeableness": 1,
+      "Conscientiousness": 3,
+      "Neuroticism": 4,
       "Openness": 3
     }
   }

@@ -36,14 +36,6 @@
     {
       "step": "Applied Persona Override",
       "layer": "persona",
-      "property": "font_style_pref",
-      "before": "Classic Serif",
-      "after": "Modern Sans-serif",
-      "arrow": "Classic Serif → Modern Sans-serif"
-    },
-    {
-      "step": "Applied Persona Override",
-      "layer": "persona",
       "property": "color_theme_pref",
       "before": "Minimalist Black & White",
       "after": "Vibrant Bold",
@@ -68,10 +60,26 @@
     {
       "step": "Applied Persona Override",
       "layer": "persona",
+      "property": "desktop_grid_pref",
+      "before": "3 Columns",
+      "after": "2 Columns",
+      "arrow": "3 Columns → 2 Columns"
+    },
+    {
+      "step": "Applied Persona Override",
+      "layer": "persona",
       "property": "desktop_navigation",
       "before": "Top Bar",
       "after": "Mega Menu",
       "arrow": "Top Bar → Mega Menu"
+    },
+    {
+      "step": "Applied Persona Override",
+      "layer": "persona",
+      "property": "desktop_price_display",
+      "before": "With Savings Highlighted",
+      "after": "Strike-through Original",
+      "arrow": "With Savings Highlighted → Strike-through Original"
     },
     {
       "step": "Applied Persona Override",
@@ -82,12 +90,12 @@
       "arrow": "Recent 3- 5 → All Paginated"
     },
     {
-      "step": "Applied Persona Override",
-      "layer": "persona",
-      "property": "mobile_sticky_header",
-      "before": "Default",
-      "after": "No",
-      "arrow": "Default → No"
+      "step": "Applied Mood Override",
+      "layer": "mood",
+      "property": "urgency_pref",
+      "before": "None",
+      "after": "Countdown Timers",
+      "arrow": "None → Countdown Timers"
     },
     {
       "step": "Applied Mood Override",
@@ -100,10 +108,10 @@
     {
       "step": "Applied Mood Override",
       "layer": "mood",
-      "property": "desktop_grid_pref",
-      "before": "3 Columns",
-      "after": "2 Columns",
-      "arrow": "3 Columns → 2 Columns"
+      "property": "desktop_navigation",
+      "before": "Mega Menu",
+      "after": "Mega Menu",
+      "arrow": "Mega Menu → Mega Menu"
     },
     {
       "step": "Applied Mood Override",
@@ -117,17 +125,9 @@
       "step": "Applied Mood Override",
       "layer": "mood",
       "property": "desktop_price_display",
-      "before": "With Savings Highlighted",
+      "before": "Strike-through Original",
       "after": "With Comparison",
-      "arrow": "With Savings Highlighted → With Comparison"
-    },
-    {
-      "step": "Applied Mood Override",
-      "layer": "mood",
-      "property": "desktop_filter_location",
-      "before": "Sidebar Left",
-      "after": "Top Bar",
-      "arrow": "Sidebar Left → Top Bar"
+      "arrow": "Strike-through Original → With Comparison"
     },
     {
       "step": "Applied Mood Override",

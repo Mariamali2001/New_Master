@@ -5,73 +5,73 @@
   "defaults": {
     "mobile_grid_pref": {
       "value": "Compact stacked cards (more products per screen)",
-      "percentage": 47.0,
-      "count": 94
+      "percentage": 48.21,
+      "count": 108
     },
     "mobile_info_density": {
       "value": "Moderate (Balanced - some details visible, click for more)",
-      "percentage": 68.5,
-      "count": 137
+      "percentage": 68.3,
+      "count": 153
     },
     "mobile_image_text_ratio": {
       "value": "Balanced (50% images, 50% text - equal emphasis)",
-      "percentage": 83.0,
-      "count": 166
+      "percentage": 82.59,
+      "count": 185
     },
     "mobile_whitespace": {
       "value": "Balanced",
-      "percentage": 85.0,
-      "count": 170
+      "percentage": 83.04,
+      "count": 186
     },
     "mobile_navigation": {
       "value": "Bottom Nav (Navigation bar at the bottom - mobile style)",
-      "percentage": 50.0,
-      "count": 100
+      "percentage": 50.45,
+      "count": 113
     },
     "mobile_search_visibility": {
       "value": "Collapsible (Search bar that expands when clicked)",
-      "percentage": 39.5,
-      "count": 79
+      "percentage": 40.18,
+      "count": 90
     },
     "mobile_category_display": {
       "value": "Dropdown Menu (Text-based dropdown list)",
-      "percentage": 42.5,
-      "count": 85
+      "percentage": 43.75,
+      "count": 98
     },
     "mobile_product_card": {
       "value": "Info Rich (Lots of details, ratings, specs visible)",
-      "percentage": 39.0,
-      "count": 78
+      "percentage": 39.73,
+      "count": 89
     },
     "mobile_price_display": {
       "value": "Strike-through Original (Shows original price crossed out with sale price)",
-      "percentage": 62.5,
-      "count": 125
+      "percentage": 60.71,
+      "count": 136
     },
     "mobile_filter_location": {
       "value": "Drawer Overlay (Slides in from the side when clicked)",
-      "percentage": 58.0,
-      "count": 116
+      "percentage": 58.48,
+      "count": 131
     },
     "mobile_quick_view": {
       "value": "Slide-Up Panel (Preview product details in a slide-up panel without leaving the product lis)",
-      "percentage": 52.0,
-      "count": 104
+      "percentage": 53.57,
+      "count": 120
     },
     "mobile_review_display": {
       "value": "Collapsible Sections (Reviews can be expanded or collapsed within the product details)",
-      "percentage": 53.0,
-      "count": 106
+      "percentage": 54.46,
+      "count": 122
     },
     "mobile_sticky_header": {
       "value": "Yes (Header stays at top while scrolling)",
-      "percentage": 64.5,
-      "count": 129
+      "percentage": 65.62,
+      "count": 147
     },
     "mobile_touch_size": {
       "value": "Standard (Normal size, more content visible)",
-      "percentage": 55.5,
-      "count": 111
+      "percentage": 54.91,
+      "count": 123
     }
   }
 }

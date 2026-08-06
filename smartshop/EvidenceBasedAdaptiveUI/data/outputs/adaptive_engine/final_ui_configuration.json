@@ -20,8 +20,8 @@
     "category_display": "Visual Grid",
     "checkout": "Progress Bar",
     "color_theme": "Vibrant Bold",
-    "filter_location": "Top Bar",
-    "font_style": "Modern Sans-serif",
+    "filter_location": "Sidebar Left",
+    "font_style": "Classic Serif",
     "form_field": "Outlined",
     "grid_layout": "2 Columns",
     "hero_banner": "Large Full screen",
@@ -40,7 +40,7 @@
     "search_visibility": "Collapsible",
     "social_proof": "Customer Reviews",
     "typography_scale": "Large",
-    "urgency": "None",
+    "urgency": "Countdown Timers",
     "visual_balance": "Image-focused",
     "visual_richness": "+1",
     "whitespace": "0"
@@ -52,7 +52,7 @@
     "checkout_style": "Progress Bar (Multi step with visual progress indicator)",
     "color_theme_pref": "Vibrant Bold (Bright, energetic colors - exciting and dynamic)",
     "desktop_category_display": "Visual Grid (Category tiles with images)",
-    "desktop_filter_location": "Top Bar (Filters displayed across the top)",
+    "desktop_filter_location": "Sidebar Left (Permanent filter panel on the left side)",
     "desktop_grid_pref": "2 Columns (Large product images, fewer items per row)",
     "desktop_image_text_ratio": "Image-focused (80% images, 20% text - highly visual)",
     "desktop_info_density": "Moderate (Balanced - some details visible, click for more)",
@@ -65,22 +65,21 @@
     "desktop_search_visibility": "Collapsible (Search bar that expands when clicked)",
     "desktop_whitespace": "Balanced",
     "font_size_pref": "3. Large (16-18px - Easy to read, comfortable)",
-    "font_style_pref": "1. Modern Sans-serif (Clean, contemporary fonts like Arial or Helvetica)",
+    "font_style_pref": "2. Classic Serif (Traditional fonts with decorative strokes like Times New Roman)",
     "form_field_style": "Outlined (Border around the field)",
     "hero_banner_size": "Large Full screen (Takes up entire first screen)",
     "mobile_category_display": "Visual Grid (Category tiles with images)",
-    "mobile_sticky_header": "No (Header scrolls away with content)",
     "product_desc_length": "Expandable Sections (Organized into collapsible sections)",
     "recommendation_type": "Deals (Products on sale or special offers)",
     "social_proof_display": "Customer Reviews (Written reviews with ratings)",
-    "urgency_pref": "None (I find these annoying and manipulative)",
+    "urgency_pref": "Countdown Timers (Show \"Sale ends in 2 hours\")",
     "whitespace_pref": "Balanced (Moderate spacing - comfortable middle ground)"
   },
   "metadata": {
     "n_persona_overrides": 7,
     "n_mood_overrides": 6,
     "n_trait_nudges": 5,
-    "n_ui_elements": 29
+    "n_ui_elements": 28
   },
   "warnings": [
     "No trait nudges found for Neuroticism = 'Low'."

@@ -1,0 +1,24 @@
+{
+  "version": "2.2",
+  "description": "Adaptive UI guidelines for the React website. Master matrix (persona × device × mood) + global defaults fill + soft TIPI trait nudges.",
+  "pipeline_order": [
+    "Detect device (desktop → Laptop/Desktop, mobile → Smartphone)",
+    "Map questionnaire persona → master persona key",
+    "Bridge detected mood → guideline mood label",
+    "Instant lookup: master_adaptive_ui_rules.json → rules[persona][device][mood]",
+    "Fill missing tokens from global_defaults.json (Any/Any/Any majority)",
+    "Apply soft TIPI trait nudges from trait_modifiers.json (intensity only)",
+    "Apply device-relevant tokens + nudge CSS vars to the shop UI"
+  ],
+  "required_for_website": [
+    "public/assets/master_adaptive_ui_rules.json",
+    "public/assets/global_defaults.json",
+    "public/assets/trait_modifiers.json"
+  ],
+  "extraction_app": "adaptive_ui_app/",
+  "extraction_notes": "Master + global defaults are exported from Streamlit page 9. Trait modifiers are a fixed soft-nudge table (not a fourth matrix axis).",
+  "not_for_runtime": [
+    "Do not call the Streamlit app or retrain models during browsing.",
+    "Trait nudges must never replace categorical master tokens."
+  ]
+}

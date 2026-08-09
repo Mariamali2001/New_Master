@@ -30,3 +30,855 @@
 .animate-shake {
   animation: shake 0.5s ease-in-out;
 }
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0.6;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes orderPop {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes orderCheckDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes orderFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.order-success-pop {
+  animation: orderPop 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.order-success-check path {
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: orderCheckDraw 0.45s ease-out 0.25s forwards;
+}
+
+.order-fade-up {
+  animation: orderFadeUp 0.45s ease-out both;
+}
+
+/* ========== Adaptive Engine → visible UI (no LLM) ========== */
+
+.adaptation-banner {
+  background: #0f172a;
+  color: #f8fafc;
+}
+
+/* While quick view is open: hide all body children except the portaled modal */
+body[data-quick-view-open] > * {
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+body[data-quick-view-open] > [data-quick-view] {
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+/* PDP tabs / reviews / FAQ — follow adaptive surface, not hard white */
+body.adaptive-active .adaptive-panel {
+  background: transparent;
+  color: inherit;
+}
+html[data-surface="dark"] body.adaptive-active .adaptive-panel {
+  background: rgba(15, 23, 42, 0.35);
+  border-radius: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+html[data-theme*="warm_earthy"] body.adaptive-active .adaptive-panel {
+  background: rgba(243, 235, 225, 0.55);
+  border-radius: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+html[data-theme*="cool_blues"] body.adaptive-active .adaptive-panel {
+  background: rgba(219, 234, 254, 0.45);
+  border-radius: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+html[data-theme*="minimalist"] body.adaptive-active .adaptive-panel {
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+body.adaptive-active .adaptive-panel .bg-white {
+  background-color: transparent !important;
+}
+body.adaptive-active .adaptive-panel [class*="rounded"][class*="border"] {
+  background-color: color-mix(in srgb, currentColor 4%, transparent);
+}
+
+html[data-adaptive="1"] body.adaptive-active {  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Mood tints the adaptation banner only — page surfaces follow theme/background tokens */
+html[data-mood="stressed"] .adaptation-banner,
+html[data-mood="fear"] .adaptation-banner {
+  background: #334155;
+}
+html[data-mood="happy"] .adaptation-banner {
+  background: #c2410c;
+}
+html[data-mood="excited"] .adaptation-banner {
+  background: #9d174d;
+}
+html[data-mood="relaxed"] .adaptation-banner,
+html[data-mood="calm"] .adaptation-banner {
+  background: #047857;
+}
+html[data-mood="sad"] .adaptation-banner {
+  background: #475569;
+}
+html[data-mood="bored"] .adaptation-banner {
+  background: #6b21a8;
+}
+html[data-mood="neutral"] .adaptation-banner {
+  background: #334155;
+}
+html[data-mood="frustrated"] .adaptation-banner {
+  background: #7f1d1d;
+}
+
+/* Guideline color themes (engine → visible page chrome) */
+html[data-theme*="warm_earthy"] body.adaptive-active {
+  background: #f3ebe1 !important;
+  color: #3b2f2f;
+}
+html[data-theme*="warm_earthy"] .adaptation-banner {
+  background: #7c4a2d;
+}
+
+html[data-theme*="minimalist"] body.adaptive-active {
+  background: #ffffff !important;
+  color: #111;
+}
+html[data-theme*="minimalist"] .adaptation-banner {
+  background: #111;
+}
+/* Minimalist B&W: force chrome/CTAs to grayscale (product photos stay as-is) */
+html[data-theme*="minimalist"] body.adaptive-active .btn,
+html[data-theme*="minimalist"] body.adaptive-active a.btn {
+  background: #111 !important;
+  color: #fff !important;
+  border-color: #111 !important;
+}
+html[data-theme*="minimalist"] body.adaptive-active header {
+  background: #fff !important;
+  border-bottom-color: #e5e5e5 !important;
+}
+
+html[data-theme*="cool_blues"] body.adaptive-active {
+  background: #e8f1f8 !important;
+  color: #0f172a;
+}
+html[data-theme*="cool_blues"] .adaptation-banner {
+  background: #1e3a5f;
+}
+
+html[data-theme*="vibrant_bold"] body.adaptive-active {
+  background: #faf6f0 !important;
+  color: #1f1135;
+}
+html[data-theme*="vibrant_bold"] .adaptation-banner {
+  background: linear-gradient(90deg, #db2777, #7c3aed);
+}
+
+html[data-theme*="pastel_soft"] body.adaptive-active {
+  background: #fdf4ff !important;
+  color: #3b0764;
+}
+html[data-theme*="pastel_soft"] .adaptation-banner {
+  background: #a78bfa;
+  color: #1e1b4b;
+}
+
+html[data-theme*="dark_mode"] body.adaptive-active {
+  background: #0f172a !important;
+  color: #e2e8f0;
+}
+html[data-theme*="dark_mode"] .adaptation-banner {
+  background: #020617;
+}
+html[data-theme*="dark_mode"] body.adaptive-active header,
+html[data-theme*="dark_mode"] body.adaptive-active .rounded-2xl,
+html[data-theme*="dark_mode"] body.adaptive-active .rounded-xl {
+  background-color: #1e293b;
+  border-color: #334155;
+  color: #e2e8f0;
+}
+
+/* Background token (fills when theme alone is subtle) */
+html[data-background*="pure_white"] body.adaptive-active {
+  background: #ffffff !important;
+}
+html[data-background*="light_gray"] body.adaptive-active {
+  background: #f1f5f9 !important;
+}
+html[data-background*="cream"] body.adaptive-active,
+html[data-background*="off_white"] body.adaptive-active {
+  background: #faf6f0 !important;
+}
+html[data-background*="soft_color"] body.adaptive-active {
+  background: #eff6ff !important;
+}
+html[data-background*="dark"] body.adaptive-active {
+  background: #111827 !important;
+  color: #f3f4f6;
+}
+
+/*
+ * Dark adaptive contrast fix (data-surface set by AdaptiveThemeProvider)
+ * Tailwind text-neutral-* / bg-white are light-theme defaults and become
+ * unreadable when the engine applies a dark surface.
+ */
+html[data-surface="dark"] body.adaptive-active {
+  color: #e2e8f0;
+}
+
+html[data-surface="dark"] body.adaptive-active .bg-white,
+html[data-surface="dark"] body.adaptive-active .bg-neutral-50 {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+}
+
+html[data-surface="dark"] body.adaptive-active .border-neutral-100,
+html[data-surface="dark"] body.adaptive-active .border-neutral-200,
+html[data-surface="dark"] body.adaptive-active .border-neutral-300 {
+  border-color: #334155 !important;
+}
+
+html[data-surface="dark"] body.adaptive-active .text-neutral-900,
+html[data-surface="dark"] body.adaptive-active .text-neutral-800,
+html[data-surface="dark"] body.adaptive-active .text-neutral-700,
+html[data-surface="dark"] body.adaptive-active .text-neutral-600 {
+  color: #e2e8f0 !important;
+}
+
+html[data-surface="dark"] body.adaptive-active .text-neutral-500,
+html[data-surface="dark"] body.adaptive-active .text-neutral-400 {
+  color: #94a3b8 !important;
+}
+
+/* Selected chips — light fill on dark for clear affordance */
+html[data-surface="dark"] body.adaptive-active .bg-neutral-900 {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+  border-color: #f8fafc !important;
+}
+
+html[data-surface="dark"] body.adaptive-active [data-filters-ui] {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+  color: #e2e8f0 !important;
+}
+
+html[data-surface="dark"] body.adaptive-active [data-filters-ui] select,
+html[data-surface="dark"] body.adaptive-active [data-filters-ui] input[type="number"],
+html[data-surface="dark"] body.adaptive-active [data-filters-ui] input[type="text"] {
+  background-color: #0f172a !important;
+  border-color: #475569 !important;
+  color: #e2e8f0 !important;
+}
+
+html[data-surface="dark"] body.adaptive-active [data-filters-ui] select option {
+  background-color: #0f172a;
+  color: #e2e8f0;
+}
+
+html[data-surface="dark"] body.adaptive-active main h1,
+html[data-surface="dark"] body.adaptive-active main h2,
+html[data-surface="dark"] body.adaptive-active main h3 {
+  color: #f8fafc;
+}
+
+html[data-surface="dark"] body.adaptive-active header a,
+html[data-surface="dark"] body.adaptive-active header button,
+html[data-surface="dark"] body.adaptive-active header span {
+  color: #e2e8f0;
+}
+
+html[data-surface="dark"] body.adaptive-active header input {
+  background-color: #0f172a !important;
+  border-color: #475569 !important;
+  color: #e2e8f0 !important;
+}
+
+/* Theme wins over background for distinctive palettes */
+html[data-theme*="vibrant_bold"] body.adaptive-active {
+  background: #faf6f0 !important;
+  color: #1f1135;
+}
+html[data-theme*="cool_blues"] body.adaptive-active {
+  background: #e8f1f8 !important;
+}
+html[data-theme*="pastel_soft"] body.adaptive-active {
+  background: #fdf4ff !important;
+}
+html[data-theme*="dark_mode"] body.adaptive-active {
+  background: #0f172a !important;
+  color: #e2e8f0;
+}
+html[data-theme*="warm_earthy"] body.adaptive-active {
+  background: #f3ebe1 !important;
+}
+
+/* Header / chrome react to adaptation */
+html[data-adaptive="1"] body.adaptive-active header {
+  background: color-mix(in srgb, canvas 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 2px solid currentColor;
+  border-bottom-color: color-mix(in srgb, currentColor 18%, transparent);
+}
+
+html[data-mood="stressed"] body.adaptive-active header,
+html[data-mood="fear"] body.adaptive-active header {
+  border-bottom-color: #64748b;
+}
+html[data-mood="happy"] body.adaptive-active header {
+  border-bottom-color: #ea580c;
+}
+html[data-mood="excited"] body.adaptive-active header {
+  border-bottom-color: #db2777;
+}
+
+/* Accent buttons — theme first, mood wins when both apply */
+html[data-adaptive="1"] body.adaptive-active .btn,
+html[data-adaptive="1"] body.adaptive-active a.btn {
+  border-radius: 0.75rem;
+}
+html[data-accent*="blue"] body.adaptive-active .btn,
+html[data-accent*="blue"] body.adaptive-active a.btn {
+  background: #1d4ed8 !important;
+  color: #fff !important;
+}
+html[data-theme*="warm_earthy"] body.adaptive-active .btn,
+html[data-theme*="warm_earthy"] body.adaptive-active a.btn {
+  background: #9a3412 !important;
+  color: #fff !important;
+}
+html[data-theme*="cool_blues"] body.adaptive-active .btn,
+html[data-theme*="cool_blues"] body.adaptive-active a.btn {
+  background: #1d4ed8 !important;
+  color: #fff !important;
+}
+html[data-theme*="vibrant_bold"] body.adaptive-active .btn,
+html[data-theme*="vibrant_bold"] body.adaptive-active a.btn {
+  background: #db2777 !important;
+  color: #fff !important;
+}
+html[data-theme*="pastel_soft"] body.adaptive-active .btn,
+html[data-theme*="pastel_soft"] body.adaptive-active a.btn {
+  background: #c084fc !important;
+  color: #1e1b4b !important;
+}
+html[data-theme*="dark_mode"] body.adaptive-active .btn,
+html[data-theme*="dark_mode"] body.adaptive-active a.btn {
+  background: #e2e8f0 !important;
+  color: #0f172a !important;
+}
+html[data-accent*="green"] body.adaptive-active .btn,
+html[data-accent*="green"] body.adaptive-active a.btn {
+  background: #15803d !important;
+  color: #fff !important;
+}
+html[data-accent*="orange"] body.adaptive-active .btn,
+html[data-accent*="orange"] body.adaptive-active a.btn,
+html[data-accent*="red"] body.adaptive-active .btn,
+html[data-accent*="red"] body.adaptive-active a.btn {
+  background: #ea580c !important;
+  color: #fff !important;
+}
+html[data-accent*="purple"] body.adaptive-active .btn,
+html[data-accent*="purple"] body.adaptive-active a.btn {
+  background: #7c3aed !important;
+  color: #fff !important;
+}
+
+/* Kill legacy CSS urgency strip — match old selectors so stale .next CSS cannot win */
+html[data-urgency*="stock"] body.adaptive-active main::before,
+html[data-urgency*="countdown"] body.adaptive-active main::before,
+html[data-urgency*="both"] body.adaptive-active main::before,
+html[data-adaptive] body.adaptive-active main::before,
+html[data-adaptive] body.adaptive-active main::after,
+body.adaptive-active main::before,
+body.adaptive-active main::after {
+  content: none !important;
+  display: none !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  background: none !important;
+  overflow: hidden !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+}
+
+/* Single urgency strip — no dividing border line */
+body.adaptive-active .adaptive-urgency-banner {
+  background: #f5f5f5;
+  color: #171717;
+  border: none !important;
+  box-shadow: none !important;
+}
+html[data-theme*="minimalist"] body.adaptive-active .adaptive-urgency-banner {
+  background: #111;
+  color: #fff;
+}
+html[data-theme*="warm_earthy"] body.adaptive-active .adaptive-urgency-banner {
+  background: #f3ebe1;
+  color: #7c4a2d;
+}
+html[data-theme*="cool_blues"] body.adaptive-active .adaptive-urgency-banner {
+  background: #dbeafe;
+  color: #1e3a5f;
+}
+html[data-theme*="vibrant_bold"] body.adaptive-active .adaptive-urgency-banner {
+  background: #fdf2f8 !important;
+  color: #9d174d !important;
+}
+html[data-theme*="pastel_soft"] body.adaptive-active .adaptive-urgency-banner {
+  background: #f5f3ff;
+  color: #5b21b6;
+}
+html[data-theme*="dark_mode"] body.adaptive-active .adaptive-urgency-banner {
+  background: #020617;
+  color: #e2e8f0;
+}
+
+/* Vibrant large-hero: soft left wash; keep face visible on the right */
+html[data-theme*="vibrant_bold"] body.adaptive-active .adaptive-hero[data-hero-size="large"] .adaptive-hero-scrim {
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.72) 0%,
+    rgba(88, 28, 135, 0.28) 42%,
+    transparent 72%
+  ) !important;
+}
+
+/* Hero theme tints — never wipe large-full photo heroes (use media filter / scrim only) */
+html[data-theme*="minimalist"] body.adaptive-active .adaptive-hero:not([data-hero-size="large"]) {
+  background: #fff !important;
+  color: #111;
+}
+html[data-theme*="minimalist"] body.adaptive-active .adaptive-hero img {
+  filter: grayscale(1) contrast(1.05);
+}
+html[data-theme*="warm_earthy"] body.adaptive-active .adaptive-hero:not([data-hero-size="large"]) {
+  background: #f3ebe1 !important;
+}
+html[data-theme*="cool_blues"] body.adaptive-active .adaptive-hero:not([data-hero-size="large"]) {
+  background: #e8f1f8 !important;
+}
+html[data-theme*="vibrant_bold"] body.adaptive-active .adaptive-hero:not([data-hero-size="large"]) {
+  background: linear-gradient(135deg, #fff1f2 0%, #eff6ff 50%, #fef9c3 100%) !important;
+}
+html[data-theme*="pastel_soft"] body.adaptive-active .adaptive-hero:not([data-hero-size="large"]) {
+  background: #f0fdf4 !important;
+}
+html[data-theme*="dark_mode"] body.adaptive-active .adaptive-hero:not([data-hero-size="large"]) {
+  background: #0f172a !important;
+  color: #e2e8f0;
+}
+html[data-theme*="dark_mode"] body.adaptive-active .adaptive-hero .adaptive-hero-copy,
+html[data-theme*="dark_mode"] body.adaptive-active .adaptive-hero .text-neutral-500,
+html[data-theme*="dark_mode"] body.adaptive-active .adaptive-hero .text-neutral-600 {
+  color: #94a3b8 !important;
+}
+
+/* Page background token (not the full-bleed photo hero) */
+html[data-background*="cream"] body.adaptive-active,
+html[data-background*="off_white"] body.adaptive-active {
+  background-color: #faf6f0;
+}
+html[data-background*="light_gray"] body.adaptive-active {
+  background-color: #f1f5f9;
+}
+html[data-background*="soft_color"] body.adaptive-active {
+  background-color: #eff6ff;
+}
+
+/* Large full hero: keep photo; theme only tints the scrim */
+/* Accent colors (survey buttons/links) — theme can override (e.g. minimalist B&W) */
+html[data-accent*="pink"] body.adaptive-active .btn,
+html[data-accent*="pink"] body.adaptive-active a.btn {
+  background: #db2777 !important;
+  color: #fff !important;
+}
+html[data-accent*="yellow"] body.adaptive-active .btn,
+html[data-accent*="yellow"] body.adaptive-active a.btn {
+  background: #eab308 !important;
+  color: #111 !important;
+}
+html[data-theme*="minimalist"] body.adaptive-active .btn,
+html[data-theme*="minimalist"] body.adaptive-active a.btn {
+  background: #111 !important;
+  color: #fff !important;
+  border-color: #111 !important;
+}
+
+html[data-adaptive="1"] body.adaptive-active .container {
+  gap: var(--adaptive-gap, 1.5rem);
+}
+
+html[data-price*="bold"] body.adaptive-active .font-extrabold {
+  font-size: 1.35rem;
+  color: #b91c1c;
+}
+
+/* Card density / list feel on shop */
+html[data-grid*="list"] body.adaptive-active [class*="grid"] {
+  gap: 1rem;
+}
+html[data-product-card*="minimal"] body.adaptive-active .group {
+  filter: saturate(0.92);
+}
+
+/* Soft TIPI trait nudges (intensity only — never change categorical variants) */
+html[data-nudge-density="high"] body.adaptive-active main .text-sm {
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+html[data-nudge-density="low"] body.adaptive-active main .text-sm {
+  font-size: 0.8rem;
+  line-height: 1.35;
+}
+html[data-nudge-visual="high"] body.adaptive-active main img {
+  filter: saturate(1.08) contrast(1.03);
+}
+html[data-nudge-visual="low"] body.adaptive-active main img {
+  filter: saturate(0.88) contrast(0.98);
+}
+html[data-nudge-social="high"] body.adaptive-active main [data-social-proof],
+html[data-nudge-social="high"] body.adaptive-active main [data-review-display] {
+  opacity: 1;
+  /* No transform — keeps fixed quick-view overlays viewport-relative */
+  font-weight: 600;
+}
+html[data-nudge-social="low"] body.adaptive-active main [data-social-proof],
+html[data-nudge-social="low"] body.adaptive-active main [data-review-display] {
+  opacity: 0.85;
+}
+
+/* ===== Form field styles — exact survey options (variant ids) =====
+   Filled Background (Shaded background, no border)
+   Outlined (Border around the field)
+   Rounded Border Fields (Outlined field with rounded corners)
+   Minimal (Very subtle, clean design)
+   Underlined / Underlined Minimal (Line underneath only)
+   Material Design Style / Floating Labels
+*/
+body.adaptive-active .adaptive-field {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 0.75rem;
+  color: inherit;
+}
+body.adaptive-active .adaptive-field:focus {
+  border-color: #171717;
+  box-shadow: 0 0 0 2px rgba(23, 23, 23, 0.12);
+}
+
+/* Outlined (Border around the field) */
+html[data-form-fields="outlined"] body.adaptive-active .adaptive-field {
+  background: transparent;
+  border: 2px solid #a3a3a3;
+  border-radius: 0.35rem;
+}
+html[data-form-fields="outlined"] body.adaptive-active .adaptive-field:focus {
+  border-color: #171717;
+  box-shadow: none;
+}
+
+/* Filled Background (Shaded background, no border) */
+html[data-form-fields="filled_background"] body.adaptive-active .adaptive-field {
+  background: #eceff1;
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: none;
+}
+html[data-form-fields="filled_background"] body.adaptive-active .adaptive-field:focus {
+  background: #e2e8f0;
+  border: none;
+  box-shadow: none;
+  outline: 2px solid #94a3b8;
+  outline-offset: 0;
+}
+
+/* Rounded Border Fields (Outlined + rounded corners — NOT pill buttons) */
+html[data-form-fields="rounded_border_fields"] body.adaptive-active .adaptive-field {
+  background: #fff;
+  border: 1.5px solid #d4d4d4;
+  border-radius: 0.9rem;
+}
+html[data-form-fields="rounded_border_fields"] body.adaptive-active .adaptive-field:focus {
+  border-color: #171717;
+  box-shadow: 0 0 0 2px rgba(23, 23, 23, 0.1);
+}
+
+/* Minimal (Very subtle, clean design) */
+html[data-form-fields="minimal"] body.adaptive-active .adaptive-field {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #e5e5e5;
+  border-radius: 0;
+  padding-left: 0.15rem;
+  padding-right: 0.15rem;
+  box-shadow: none;
+}
+html[data-form-fields="minimal"] body.adaptive-active .adaptive-field:focus {
+  border-bottom-color: #171717;
+  box-shadow: none;
+}
+
+/* Underlined (Line underneath only) */
+html[data-form-fields="underlined"] body.adaptive-active .adaptive-field,
+html[data-form-fields="underlined_minimal"] body.adaptive-active .adaptive-field {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #a3a3a3;
+  border-radius: 0;
+  padding-left: 0;
+  padding-right: 0;
+  box-shadow: none;
+}
+html[data-form-fields="underlined"] body.adaptive-active .adaptive-field:focus,
+html[data-form-fields="underlined_minimal"] body.adaptive-active .adaptive-field:focus {
+  border-bottom-color: #171717;
+  box-shadow: none;
+}
+
+/* Material Design Style / Floating Labels */
+html[data-form-fields="material_design_style"] body.adaptive-active .adaptive-field,
+html[data-form-fields="floating_labels"] body.adaptive-active .adaptive-field {
+  background: #f5f5f5;
+  border: none;
+  border-bottom: 2px solid #737373;
+  border-radius: 0.4rem 0.4rem 0 0;
+  box-shadow: none;
+}
+html[data-form-fields="material_design_style"] body.adaptive-active .adaptive-field:focus,
+html[data-form-fields="floating_labels"] body.adaptive-active .adaptive-field:focus {
+  background: #eeeeee;
+  border-bottom-color: #2563eb;
+  box-shadow: none;
+}
+
+html[data-theme*="dark_mode"] body.adaptive-active .adaptive-field {
+  background: #0f172a;
+  border-color: #475569;
+  color: #e2e8f0;
+}
+html[data-theme*="dark_mode"][data-form-fields="filled_background"] body.adaptive-active .adaptive-field {
+  background: #334155;
+  border: none;
+}
+
+/* Whitespace (whitespace_pref + desktop/mobile_whitespace aliases) */
+html[data-whitespace*="compact"] body.adaptive-active main .container,
+html[data-whitespace*="tight"] body.adaptive-active main .container {
+  --adaptive-gap: 0.75rem;
+}
+html[data-whitespace*="compact"] body.adaptive-active main .space-y-4 > :not([hidden]) ~ :not([hidden]),
+html[data-whitespace*="compact"] body.adaptive-active main .space-y-6 > :not([hidden]) ~ :not([hidden]),
+html[data-whitespace*="tight"] body.adaptive-active main .space-y-4 > :not([hidden]) ~ :not([hidden]),
+html[data-whitespace*="tight"] body.adaptive-active main .space-y-6 > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 0.75rem;
+}
+html[data-whitespace*="spacious"] body.adaptive-active main .container,
+html[data-whitespace*="generous"] body.adaptive-active main .container,
+html[data-whitespace*="airy"] body.adaptive-active main .container {
+  --adaptive-gap: 2.75rem;
+}
+html[data-whitespace*="spacious"] body.adaptive-active main .py-10,
+html[data-whitespace*="generous"] body.adaptive-active main .py-10,
+html[data-whitespace*="airy"] body.adaptive-active main .py-10 {
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+}
+
+/* Social proof influence (categorical guideline; complements trait nudge) */
+html[data-social-proof-influence*="high"] body.adaptive-active main .adaptive-social-proof,
+html[data-social-proof-influence*="strong"] body.adaptive-active main .adaptive-social-proof,
+html[data-social-proof-influence*="high"] body.adaptive-active main [data-social-proof],
+html[data-social-proof-influence*="strong"] body.adaptive-active main [data-social-proof] {
+  opacity: 1;
+  font-weight: 600;
+}
+html[data-social-proof-influence*="moderate"] body.adaptive-active main .adaptive-social-proof,
+html[data-social-proof-influence*="moderate"] body.adaptive-active main [data-social-proof] {
+  opacity: 1;
+}
+html[data-social-proof-influence*="low"] body.adaptive-active main .adaptive-social-proof,
+html[data-social-proof-influence*="little"] body.adaptive-active main .adaptive-social-proof,
+html[data-social-proof-influence*="weak"] body.adaptive-active main .adaptive-social-proof,
+html[data-social-proof-influence*="low"] body.adaptive-active main [data-social-proof],
+html[data-social-proof-influence*="little"] body.adaptive-active main [data-social-proof],
+html[data-social-proof-influence*="weak"] body.adaptive-active main [data-social-proof] {
+  opacity: 0.55;
+}
+html[data-social-proof-influence*="none"] body.adaptive-active main .adaptive-social-proof,
+html[data-social-proof-influence*="ignore"] body.adaptive-active main .adaptive-social-proof,
+html[data-social-proof-influence*="not"] body.adaptive-active main .adaptive-social-proof {
+  display: none;
+}
+
+/* Font style / size from survey tokens */
+html[data-font-style*="serif"] body.adaptive-active,
+html[data-font-style*="classic"] body.adaptive-active {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+}
+html[data-font-style*="rounded"] body.adaptive-active,
+html[data-font-style*="friendly"] body.adaptive-active {
+  font-family: "Nunito", "Avenir Next Rounded", "Segoe UI", system-ui, sans-serif;
+}
+html[data-font-style*="sans"] body.adaptive-active,
+html[data-font-style*="modern"] body.adaptive-active {
+  font-family: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+}
+html[data-font-style*="bold"] body.adaptive-active,
+html[data-font-style*="impact"] body.adaptive-active {
+  font-family: Impact, "Arial Black", "Helvetica Neue", sans-serif;
+  letter-spacing: 0.01em;
+}
+html[data-font-style*="bold"] body.adaptive-active h1,
+html[data-font-style*="impact"] body.adaptive-active h1,
+html[data-font-style*="bold"] body.adaptive-active h2,
+html[data-font-style*="impact"] body.adaptive-active h2 {
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+html[data-font-size*="small"] body.adaptive-active {
+  font-size: 14px;
+}
+html[data-font-size*="medium"] body.adaptive-active,
+html[data-font-size="2"] body.adaptive-active {
+  font-size: 16px;
+}
+html[data-font-size*="large"] body.adaptive-active:not([data-font-size*="extra"]) {
+  font-size: 17px;
+}
+html[data-font-size*="extra"] body.adaptive-active {
+  font-size: 19px;
+}
+
+/* Button style tokens */
+html[data-button-style*="pill"] body.adaptive-active .btn,
+html[data-button-style*="pill"] body.adaptive-active a.btn {
+  border-radius: 9999px !important;
+}
+html[data-button-style*="sharp"] body.adaptive-active .btn,
+html[data-button-style*="square"] body.adaptive-active .btn,
+html[data-button-style*="sharp"] body.adaptive-active a.btn,
+html[data-button-style*="square"] body.adaptive-active a.btn {
+  border-radius: 0 !important;
+}
+html[data-button-style*="rounded"] body.adaptive-active .btn,
+html[data-button-style*="rounded"] body.adaptive-active a.btn {
+  border-radius: 0.75rem !important;
+}
+html[data-button-style*="raised"] body.adaptive-active .btn,
+html[data-button-style*="shadow"] body.adaptive-active .btn,
+html[data-button-style*="raised"] body.adaptive-active a.btn,
+html[data-button-style*="shadow"] body.adaptive-active a.btn {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+  transform: translateY(-1px);
+}
+html[data-button-style*="flat"] body.adaptive-active .btn,
+html[data-button-style*="flat"] body.adaptive-active a.btn {
+  box-shadow: none !important;
+}
+html[data-button-style*="outlined"] body.adaptive-active .btn,
+html[data-button-style*="outlined"] body.adaptive-active a.btn {
+  background: transparent !important;
+  color: inherit !important;
+  border: 2px solid currentColor !important;
+}
+
+/* Mobile sticky header */
+html[data-sticky-header*="no"] body.adaptive-active header {
+  position: relative !important;
+  top: auto !important;
+}
+
+/* Touch target size (mobile-oriented, applies generally when adapted) */
+html[data-touch*="large"] body.adaptive-active .btn,
+html[data-touch*="large"] body.adaptive-active a.btn,
+html[data-touch*="large"] body.adaptive-active header a,
+html[data-touch*="large"] body.adaptive-active header button {
+  min-height: 2.75rem;
+  padding-left: 1.1rem;
+  padding-right: 1.1rem;
+}
+
+/* Image vs text emphasis on product cards
+   Avoid transform on card ancestors — it breaks position:fixed quick-view overlays. */
+html[data-image-text*="image"] body.adaptive-active main .group .aspect-\[3\/4\] img,
+html[data-image-text*="image"] body.adaptive-active main .group .aspect-\[4\/5\] img,
+html[data-image-text*="image"] body.adaptive-active main .group .aspect-square img {
+  object-fit: cover;
+  object-position: center;
+}
+html[data-image-text*="image"] body.adaptive-active main .group .text-sm,
+html[data-image-text*="image"] body.adaptive-active main .group p {
+  font-size: 0.78rem;
+}
+html[data-image-text*="text"] body.adaptive-active main .group .aspect-\[3\/4\],
+html[data-image-text*="text"] body.adaptive-active main .group .aspect-\[4\/5\],
+html[data-image-text*="text"] body.adaptive-active main .group .aspect-square {
+  max-height: 11rem;
+}
+html[data-image-text*="text"] body.adaptive-active main .group .aspect-\[3\/4\] img,
+html[data-image-text*="text"] body.adaptive-active main .group .aspect-\[4\/5\] img,
+html[data-image-text*="text"] body.adaptive-active main .group .aspect-square img {
+  object-fit: cover;
+}
+html[data-image-text*="text"] body.adaptive-active main .group .text-sm,
+html[data-image-text*="text"] body.adaptive-active main .group p {
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+/* Catalog info density */
+html[data-info-density*="minimal"] body.adaptive-active main [data-social-proof],
+html[data-info-density*="minimal"] body.adaptive-active main .group .text-xs {
+  display: none;
+}
+html[data-info-density*="detailed"] body.adaptive-active main .group {
+  outline: 1px solid rgba(0, 0, 0, 0.06);
+  padding-bottom: 0.35rem;
+}

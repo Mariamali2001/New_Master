@@ -11,8 +11,8 @@ type AvatarState = "idle" | "typing" | "password" | "error" | "success";
 export function LoginForm() {
   const router = useRouter();
   const [remember, setRemember] = useState(true);
-  const [email, setEmail] = useState("demo@smartshop.dev");
-  const [password, setPassword] = useState("demo1234");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [status, setStatus] = useState<Status>({ type: "idle" });
   const [submitting, setSubmitting] = useState(false);
   const [avatarState, setAvatarState] = useState<AvatarState>("idle");
@@ -37,10 +37,14 @@ export function LoginForm() {
       }
       setStatus({ type: "success" });
       setAvatarState("success");
-      // Force full page reload to fetch user session
+      const { clearAdaptiveExperiment } = await import(
+        "@/lib/experiment/clearAdaptive"
+      );
+      clearAdaptiveExperiment();
+      // Land on home (not shop/filters); browse timer still starts
       setTimeout(() => {
-        window.location.href = "/";
-      }, 1500);
+        window.location.href = "/?experiment=browse";
+      }, 800);
     } catch (error) {
       setStatus({
         type: "error",

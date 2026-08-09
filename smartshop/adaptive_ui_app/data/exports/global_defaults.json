@@ -1,0 +1,344 @@
+{
+  "project": "Towards Intelligent User-Adaptive Interfaces",
+  "description": "Global UI defaults \u2014 dataset-wide majority (persona/device/mood = Any). Used by Adaptive Engine to fill missing tokens after master matrix lookup.",
+  "version": "1.0",
+  "source": "adaptive_ui_app get_guideline filters=Any/Any/Any",
+  "total_dataset_records": 255,
+  "applied_filters": {
+    "primary_persona": "Any",
+    "current_mood": "Any",
+    "primary_device": "Any"
+  },
+  "tokens": {
+    "font_style_pref": "2. Classic Serif (Traditional fonts with decorative strokes like Times New Roman)",
+    "font_size_pref": "3. Large (16-18px - Easy to read, comfortable)",
+    "color_theme_pref": "Warm Earthy (Browns, beiges, warm oranges - natural and cozy)",
+    "accent_color_pref": "Blue (Trustworthy, professional, calm)",
+    "background_pref": "Cream/Off-white (Warm, comfortable, paper-like)",
+    "whitespace_pref": "Balanced (Moderate spacing - comfortable middle ground)",
+    "button_style_pref": "Rounded Corners (Soft, modern rounded edges)",
+    "hero_banner_size": "Medium Split (Takes up half the screen)",
+    "recommendation_type": "Deals (Products on sale or special offers)",
+    "social_proof_display": "User Photos (Photos uploaded by customers)",
+    "urgency_pref": "Both (Show both stock and time based urgency)",
+    "checkout_style": "One Page (All checkout steps on a single scrolling page)",
+    "form_field_style": "Rounded Border Fields (Outlined field with rounded corners)",
+    "product_desc_length": "Moderate (Key details with option to expand)",
+    "desktop_navigation": "Top Bar (Categories always visible across the top)",
+    "desktop_product_card": "Info Rich (Lots of details, ratings, specs visible)",
+    "desktop_review_display": "Recent 3- 5 (Show a few recent reviews)",
+    "desktop_info_density": "Moderate (Balanced - some details visible, click for more)",
+    "desktop_filter_location": "Sidebar Left (Permanent filter panel on the left side)",
+    "desktop_quick_view": "Sidebar Slide (Details slide in from the right)",
+    "desktop_whitespace": "Balanced",
+    "desktop_grid_pref": "3 Columns (Balanced view, moderate item size)",
+    "desktop_image_text_ratio": "Image-focused (80% images, 20% text - highly visual)",
+    "desktop_search_visibility": "Always Visible Top (Large, prominent search bar always shown)",
+    "desktop_category_display": "Visual Grid (Category tiles with images)",
+    "desktop_price_display": "With Savings Highlighted (Shows discount amount prominently)",
+    "desktop_persistent_filters": "Yes (Always visible sidebar with filters)",
+    "mobile_navigation": "Bottom Nav (Navigation bar at the bottom - mobile style)",
+    "mobile_product_card": "Info Rich (Lots of details, ratings, specs visible)",
+    "mobile_review_display": "Collapsible Sections (Reviews can be expanded or collapsed within the product details)",
+    "mobile_info_density": "Moderate (Balanced - some details visible, click for more)",
+    "mobile_filter_location": "Drawer Overlay (Slides in from the side when clicked)",
+    "mobile_quick_view": "Slide-Up Panel (Preview product details in a slide-up panel without leaving the product lis)",
+    "mobile_whitespace": "Balanced",
+    "mobile_grid_pref": "Compact stacked cards (more products per screen)",
+    "mobile_image_text_ratio": "Balanced (50% images, 50% text - equal emphasis)",
+    "mobile_search_visibility": "Collapsible (Search bar that expands when clicked)",
+    "mobile_category_display": "Dropdown Menu (Text-based dropdown list)",
+    "mobile_price_display": "Strike-through Original (Shows original price crossed out with sale price)",
+    "mobile_sticky_header": "Yes (Header stays at top while scrolling)",
+    "mobile_touch_size": "Standard (Normal size, more content visible)"
+  },
+  "token_details": {
+    "font_style_pref": {
+      "value": "2. Classic Serif (Traditional fonts with decorative strokes like Times New Roman)",
+      "confidence": 0.3804,
+      "user_support_count": 255,
+      "stability_label": "High Confidence",
+      "stability_score": 1.0
+    },
+    "font_size_pref": {
+      "value": "3. Large (16-18px - Easy to read, comfortable)",
+      "confidence": 0.451,
+      "user_support_count": 255,
+      "stability_label": "High Confidence",
+      "stability_score": 1.0
+    },
+    "color_theme_pref": {
+      "value": "Warm Earthy (Browns, beiges, warm oranges - natural and cozy)",
+      "confidence": 0.2353,
+      "user_support_count": 255,
+      "stability_label": "Exploratory",
+      "stability_score": 0.45
+    },
+    "accent_color_pref": {
+      "value": "Blue (Trustworthy, professional, calm)",
+      "confidence": 0.5412,
+      "user_support_count": 255,
+      "stability_label": "High Confidence",
+      "stability_score": 1.0
+    },
+    "background_pref": {
+      "value": "Cream/Off-white (Warm, comfortable, paper-like)",
+      "confidence": 0.3765,
+      "user_support_count": 255,
+      "stability_label": "High Confidence",
+      "stability_score": 1.0
+    },
+    "whitespace_pref": {
+      "value": "Balanced (Moderate spacing - comfortable middle ground)",
+      "confidence": 0.7294,
+      "user_support_count": 255,
+      "stability_label": "High Confidence",
+      "stability_score": 1.0
+    },
+    "button_style_pref": {
+      "value": "Rounded Corners (Soft, modern rounded edges)",
+      "confidence": 0.4,
+      "user_support_count": 255,
+      "stability_label": "High Confidence",
+      "stability_score": 1.0
+    },
+    "hero_banner_size": {
+      "value": "Medium Split (Takes up half the screen)",
+      "confidence": 0.5216,
+      "user_support_count": 255,
+      "stability_label": "High Confidence",
+      "stability_score": 1.0
+    },
+    "recommendation_type": {
+      "value": "Deals (Products on sale or special offers)",
+      "confidence": 0.4824,
+      "user_support_count": 255,
+      "stability_label": "High Confidence",
+      "stability_score": 1.0
+    },
+    "social_proof_display": {
+      "value": "User Photos (Photos uploaded by customers)",
+      "confidence": 0.3647,
+      "user_support_count": 255,
+      "stability_label": "Moderate Confidence",
+      "stability_score": 0.7
+    },
+    "urgency_pref": {
+      "value": "Both (Show both stock and time based urgency)",
+      "confidence": 0.3294,
+      "user_support_count": 255,
+      "stability_label": "High Confidence",
+      "stability_score": 0.9
+    },
+    "checkout_style": {
+      "value": "One Page (All checkout steps on a single scrolling page)",
+      "confidence": 0.3647,
+      "user_support_count": 255,
+      "stability_label": "Moderate Confidence",
+      "stability_score": 0.65
+    },
+    "form_field_style": {
+      "value": "Rounded Border Fields (Outlined field with rounded corners)",
+      "confidence": 0.2392,
+      "user_support_count": 255,
+      "stability_label": "Moderate Confidence",
+      "stability_score": 0.8
+    },
+    "product_desc_length": {
+      "value": "Moderate (Key details with option to expand)",
+      "confidence": 0.3059,
+      "user_support_count": 255,
+      "stability_label": "Moderate Confidence",
+      "stability_score": 0.55
+    },
+    "desktop_navigation": {
+      "value": "Top Bar (Categories always visible across the top)",
+      "confidence": 0.298,
+      "user_support_count": 255,
+      "stability_label": "Moderate Confidence",
+      "stability_score": 0.8
+    },
+    "desktop_product_card": {
+      "value": "Info Rich (Lots of details, ratings, specs visible)",
+      "confidence": 0.3059,
+      "user_support_count": 255,
+      "stability_label": "High Confidence",
+      "stability_score": 0.95
+    },
+    "desktop_review_display": {
+      "value": "Recent 3- 5 (Show a few recent reviews)",
+      "confidence": 0.3843,
+      "user_support_count": 255,
+      "stability_label": "High Confidence",
+      "stability_score": 0.95
+    },
+    "desktop_info_density": {
+      "value": "Moderate (Balanced - some details visible, click for more)",
+      "confidence": 0.7176,
+      "user_support_count": 255,
+      "stability_label": "High Confidence",
+      "stability_score": 1.0
+    },
+    "desktop_filter_location": {
+      "value": "Sidebar Left (Permanent filter panel on the left side)",
+      "confidence": 0.4353,
+      "user_support_count": 255,
+      "stability_label": "Moderate Confidence",
+      "stability_score": 0.75
+    },
+    "desktop_quick_view": {
+      "value": "Sidebar Slide (Details slide in from the right)",
+      "confidence": 0.4549,
+      "user_support_count": 255,
+      "stability_label": "High Confidence",
+      "stability_score": 1.0
+    },
+    "desktop_whitespace": {
+      "value": "Balanced",
+      "confidence": 0.5725,
+      "user_support_count": 255,
+      "stability_label": "High Confidence",
+      "stability_score": 1.0
+    },
+    "desktop_grid_pref": {
+      "value": "3 Columns (Balanced view, moderate item size)",
+      "confidence": 0.3137,
+      "user_support_count": 255,
+      "stability_label": "Moderate Confidence",
+      "stability_score": 0.75
+    },
+    "desktop_image_text_ratio": {
+      "value": "Image-focused (80% images, 20% text - highly visual)",
+      "confidence": 0.4667,
+      "user_support_count": 255,
+      "stability_label": "Exploratory",
+      "stability_score": 0.5
+    },
+    "desktop_search_visibility": {
+      "value": "Always Visible Top (Large, prominent search bar always shown)",
+      "confidence": 0.4157,
+      "user_support_count": 255,
+      "stability_label": "Moderate Confidence",
+      "stability_score": 0.7
+    },
+    "desktop_category_display": {
+      "value": "Visual Grid (Category tiles with images)",
+      "confidence": 0.4196,
+      "user_support_count": 255,
+      "stability_label": "High Confidence",
+      "stability_score": 1.0
+    },
+    "desktop_price_display": {
+      "value": "With Savings Highlighted (Shows discount amount prominently)",
+      "confidence": 0.2627,
+      "user_support_count": 255,
+      "stability_label": "Moderate Confidence",
+      "stability_score": 0.65
+    },
+    "desktop_persistent_filters": {
+      "value": "Yes (Always visible sidebar with filters)",
+      "confidence": 0.7412,
+      "user_support_count": 255,
+      "stability_label": "High Confidence",
+      "stability_score": 1.0
+    },
+    "mobile_navigation": {
+      "value": "Bottom Nav (Navigation bar at the bottom - mobile style)",
+      "confidence": 0.4863,
+      "user_support_count": 255,
+      "stability_label": "High Confidence",
+      "stability_score": 1.0
+    },
+    "mobile_product_card": {
+      "value": "Info Rich (Lots of details, ratings, specs visible)",
+      "confidence": 0.3843,
+      "user_support_count": 255,
+      "stability_label": "High Confidence",
+      "stability_score": 0.9
+    },
+    "mobile_review_display": {
+      "value": "Collapsible Sections (Reviews can be expanded or collapsed within the product details)",
+      "confidence": 0.5412,
+      "user_support_count": 255,
+      "stability_label": "High Confidence",
+      "stability_score": 1.0
+    },
+    "mobile_info_density": {
+      "value": "Moderate (Balanced - some details visible, click for more)",
+      "confidence": 0.6745,
+      "user_support_count": 255,
+      "stability_label": "High Confidence",
+      "stability_score": 1.0
+    },
+    "mobile_filter_location": {
+      "value": "Drawer Overlay (Slides in from the side when clicked)",
+      "confidence": 0.5569,
+      "user_support_count": 255,
+      "stability_label": "High Confidence",
+      "stability_score": 1.0
+    },
+    "mobile_quick_view": {
+      "value": "Slide-Up Panel (Preview product details in a slide-up panel without leaving the product lis)",
+      "confidence": 0.5333,
+      "user_support_count": 255,
+      "stability_label": "High Confidence",
+      "stability_score": 1.0
+    },
+    "mobile_whitespace": {
+      "value": "Balanced",
+      "confidence": 0.8039,
+      "user_support_count": 255,
+      "stability_label": "High Confidence",
+      "stability_score": 1.0
+    },
+    "mobile_grid_pref": {
+      "value": "Compact stacked cards (more products per screen)",
+      "confidence": 0.4784,
+      "user_support_count": 255,
+      "stability_label": "High Confidence",
+      "stability_score": 1.0
+    },
+    "mobile_image_text_ratio": {
+      "value": "Balanced (50% images, 50% text - equal emphasis)",
+      "confidence": 0.8157,
+      "user_support_count": 255,
+      "stability_label": "High Confidence",
+      "stability_score": 1.0
+    },
+    "mobile_search_visibility": {
+      "value": "Collapsible (Search bar that expands when clicked)",
+      "confidence": 0.3961,
+      "user_support_count": 255,
+      "stability_label": "Moderate Confidence",
+      "stability_score": 0.8
+    },
+    "mobile_category_display": {
+      "value": "Dropdown Menu (Text-based dropdown list)",
+      "confidence": 0.4392,
+      "user_support_count": 255,
+      "stability_label": "High Confidence",
+      "stability_score": 0.9
+    },
+    "mobile_price_display": {
+      "value": "Strike-through Original (Shows original price crossed out with sale price)",
+      "confidence": 0.6039,
+      "user_support_count": 255,
+      "stability_label": "High Confidence",
+      "stability_score": 1.0
+    },
+    "mobile_sticky_header": {
+      "value": "Yes (Header stays at top while scrolling)",
+      "confidence": 0.6706,
+      "user_support_count": 255,
+      "stability_label": "High Confidence",
+      "stability_score": 1.0
+    },
+    "mobile_touch_size": {
+      "value": "Standard (Normal size, more content visible)",
+      "confidence": 0.5529,
+      "user_support_count": 255,
+      "stability_label": "High Confidence",
+      "stability_score": 0.95
+    }
+  }
+}

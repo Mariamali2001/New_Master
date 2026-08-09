@@ -1,6 +1,8 @@
 import { listProducts } from "@/server/products";
 import { FilterSidebar } from "@/components/shop/FilterSidebar";
 import { ProductGrid } from "@/components/shop/ProductGrid";
+import { AdaptiveShopLayout } from "@/components/adaptive/AdaptiveShopLayout";
+import { productMatchesSearch } from "@/lib/productSearch";
 
 export default async function ShopPage({
   searchParams,
@@ -13,14 +15,11 @@ export default async function ShopPage({
   // Apply filters to products
   let filteredProducts = allProducts;
 
-  // Filter by search query
-  if (params.search && typeof params.search === "string") {
-    const searchTerm = params.search.toLowerCase();
+  // Filter by search query only when user typed a search (not experiment params)
+  if (typeof params.search === "string" && params.search.trim()) {
+    const searchTerm = params.search.trim();
     filteredProducts = filteredProducts.filter((p) =>
-      p.title.toLowerCase().includes(searchTerm) ||
-      p.description.toLowerCase().includes(searchTerm) ||
-      p.category?.toLowerCase().includes(searchTerm) ||
-      p.brand?.toLowerCase().includes(searchTerm)
+      productMatchesSearch(p, searchTerm)
     );
   }
 
@@ -31,10 +30,11 @@ export default async function ShopPage({
     );
   }
 
-  // Filter by brand
+  // Filter by brand (substring so "ordinary" matches "The Ordinary")
   if (params.brand && typeof params.brand === "string") {
-    filteredProducts = filteredProducts.filter((p) => 
-      p.brand?.toLowerCase() === (params.brand as string).toLowerCase()
+    const brandTerm = (params.brand as string).toLowerCase();
+    filteredProducts = filteredProducts.filter((p) =>
+      p.brand?.toLowerCase().includes(brandTerm)
     );
   }
 
@@ -61,6 +61,24 @@ export default async function ShopPage({
     filteredProducts = filteredProducts.filter((p) => p.price >= min && p.price <= max);
   }
 
+  // On sale (has compareAt higher than price)
+  if (params.sale && typeof params.sale === "string") {
+    filteredProducts = filteredProducts.filter(
+      (p) => p.compareAt != null && p.compareAt > p.price
+    );
+  }
+
+  // "New" ≈ newest third of catalog by id
+  if (params.new && typeof params.new === "string") {
+    const newestIds = new Set(
+      [...allProducts]
+        .sort((a, b) => b.id.localeCompare(a.id))
+        .slice(0, Math.max(8, Math.ceil(allProducts.length * 0.35)))
+        .map((p) => p.id)
+    );
+    filteredProducts = filteredProducts.filter((p) => newestIds.has(p.id));
+  }
+
   // Extract unique values for filters from all products
   const categoryCounts = allProducts.reduce((acc, p) => {
     if (p.category) {
@@ -74,6 +92,9 @@ export default async function ShopPage({
     { value: "electronics", label: "Electronics", count: categoryCounts.electronics || 0 },
     { value: "fashion", label: "Fashion", count: categoryCounts.fashion || 0 },
     { value: "accessories", label: "Accessories", count: categoryCounts.accessories || 0 },
+    { value: "beauty", label: "Beauty", count: categoryCounts.beauty || 0 },
+    { value: "home", label: "Home", count: categoryCounts.home || 0 },
+    { value: "caps", label: "Caps", count: categoryCounts.caps || 0 },
   ];
 
   const brandCounts = allProducts.reduce((acc, p) => {
@@ -117,25 +138,37 @@ export default async function ShopPage({
     max: 5000,
   };
 
-  const pageTitle = params.search 
-    ? `Search results for "${params.search}"`
+  // Only show "Search results" when the user actually searched
+  const searchQuery =
+    typeof params.search === "string" && params.search.trim()
+      ? params.search.trim()
+      : "";
+  const pageTitle = searchQuery
+    ? `Search results for "${searchQuery}"`
     : "Shop All Products";
 
   return (
     <div className="container py-8">
       <h1 className="text-3xl font-bold mb-6">{pageTitle}</h1>
       
-      <div className="flex flex-col lg:flex-row gap-8">
-        <FilterSidebar
-          categories={categories}
-          brands={brands}
-          colors={colors}
-          sizes={sizes}
-          priceRange={priceRange}
-        />
-        
-        <ProductGrid products={filteredProducts} totalCount={allProducts.length} />
-      </div>
+      <AdaptiveShopLayout
+        filters={
+          <FilterSidebar
+            categories={categories}
+            brands={brands}
+            colors={colors}
+            sizes={sizes}
+            priceRange={priceRange}
+          />
+        }
+        grid={
+          <ProductGrid
+            products={filteredProducts}
+            totalCount={filteredProducts.length}
+            catalogCount={allProducts.length}
+          />
+        }
+      />
     </div>
   );
 }

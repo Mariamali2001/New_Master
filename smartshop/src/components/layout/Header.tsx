@@ -1,100 +1,100 @@
 // components/layout/Header.tsx
 "use client";
+import { useState } from "react";
 import Link from "next/link";
 import { MegaMenuTrigger } from "./MegaMenu";
 import { SearchBar } from "./SearchBar";
 import { UserMenu } from "./UserMenu";
+import { MobileNav } from "./MobileNav";
 
+export type HeaderVariant = "mega_menu" | "top_bar" | "fullscreen";
+
+type HeaderProps = {
+  /** Guideline-driven layout. Default mega_menu keeps prior behavior. */
+  variant?: HeaderVariant;
+  /** Slimmer bar when paired with bottom nav */
+  compact?: boolean;
+};
+
+const CAT_IMG = {
+  electronics:
+    "https://i.3dmodels.org/uploads/Apple/516_Apple_MacBook_Pro_2021_14_inch_Space_Gray/Apple_MacBook_Pro_2021_14_inch_Space_Gray_1000_0001.jpg",
+  fashion:
+    "https://mediahub.coastfashion.com/bkk18061_beige_xl?qlt=70&w=549&ssz=true&dpr=2",
+  accessories:
+    "https://xcdn.next.co.uk/common/items/default/default/itemimages/3_4Ratio/product/lge/767397s6.jpg?im=Resize,width=750",
+  beauty:
+    "https://i0.wp.com/ordinaryeg.com/wp-content/uploads/2023/09/rdn-ascorbyl-glucoside-solution-12pct-30ml-1.webp?fit=800%2C800&ssl=1",
+  home: "https://www.ikea.com/ca/en/images/products/blidvaeder-table-lamp-off-white-ceramic-beige__1059592_pe849717_s5.jpg?f=s",
+  caps: "https://watchesprime.com/wp-content/uploads/2022/08/baseball-nike-cap-black-cotton-hat-size-heritage86.jpg",
+};
+
+const TOP_BAR_LINKS = [
+  { label: "Shop", href: "/shop" },
+  { label: "Electronics", href: "/shop?category=electronics" },
+  { label: "Fashion", href: "/shop?category=fashion" },
+  { label: "On Sale", href: "/shop?sale=50" },
+  { label: "Mood camera", href: "/shop/mood" },
+];
+
+/** Only categories that have products in the catalog */
 const shopMenuColumns = [
   {
-    title: "SHOP BY PRODUCT",
+    title: "SHOP BY CATEGORY",
     items: [
       { label: "View all", href: "/shop" },
-      { label: "New in", href: "/shop?filter=new" },
-      { label: "Selling Fast", href: "/shop?filter=trending" },
-      { label: "Hair Accessories", href: "/shop?category=hair" },
-      { label: "Hats", href: "/shop?category=hats" },
-      { label: "Gifts", href: "/shop?category=gifts" },
-      { label: "Belts", href: "/shop?category=belts" },
-      { label: "Caps", href: "/shop?category=caps" },
-      { label: "Gloves", href: "/shop?category=gloves" },
-      { label: "Scarves", href: "/shop?category=scarves" },
-      { label: "Socks & Tights", href: "/shop?category=socks" },
+      { label: "Electronics", href: "/shop?category=electronics", image: CAT_IMG.electronics },
+      { label: "Fashion", href: "/shop?category=fashion", image: CAT_IMG.fashion },
+      { label: "Accessories", href: "/shop?category=accessories", image: CAT_IMG.accessories },
+      { label: "Beauty", href: "/shop?category=beauty", image: CAT_IMG.beauty },
+      { label: "Home", href: "/shop?category=home", image: CAT_IMG.home },
+      { label: "Caps", href: "/shop?category=caps", image: CAT_IMG.caps },
     ],
   },
   {
-    title: "SHOP BY BAGS",
+    title: "MORE",
     items: [
-      { label: "View all", href: "/shop?category=bags", image: "/images/prod2.jpg" },
-      { label: "Cross Body Bags", href: "/shop?category=crossbody", image: "/images/prod3.jpg" },
-      { label: "Tote Bags", href: "/shop?category=tote", image: "/images/prod4.jpg" },
-      { label: "Travel Bags", href: "/shop?category=travel", image: "/images/prod5.jpg" },
-      { label: "Shoulder Bags", href: "/shop?category=shoulder", image: "/images/prod6.jpg" },
-      { label: "Clutches", href: "/shop?category=clutches", image: "/images/prod7.jpg" },
-    ],
-  },
-  {
-    title: "SHOP BY JEWELLERY",
-    items: [
-      { label: "View all", href: "/shop?category=jewellery", image: "/images/prod1.jpg" },
-      { label: "Earrings", href: "/shop?category=earrings", image: "/images/prod2.jpg" },
-      { label: "Necklaces", href: "/shop?category=necklaces", image: "/images/prod3.jpg" },
-      { label: "Rings", href: "/shop?category=rings", image: "/images/prod4.jpg" },
-      { label: "Bracelets", href: "/shop?category=bracelets", image: "/images/prod5.jpg" },
-      { label: "Plated & Sterling Jewellery", href: "/shop?category=sterling", image: "/images/prod6.jpg" },
+      { label: "On sale", href: "/shop?sale=50" },
+      { label: "New arrivals", href: "/shop?new=week" },
+      { label: "Highest rated", href: "/shop?sort=rating" },
     ],
   },
   {
     title: "Featured",
     items: [],
     featured: {
-      title: "WINTER ACCESSORIES",
-      image: "/images/prod7.jpg",
-      href: "/shop?collection=winter",
+      title: "SHOP ELECTRONICS",
+      image: CAT_IMG.electronics,
+      href: "/shop?category=electronics",
     },
   },
 ];
 
 const brandsMenuColumns = [
   {
-    title: "TOP BRANDS",
+    title: "TECH",
+    items: [
+      { label: "Apple", href: "/shop?brand=apple" },
+      { label: "Philips", href: "/shop?brand=philips" },
+    ],
+  },
+  {
+    title: "FASHION",
     items: [
       { label: "Nike", href: "/shop?brand=nike" },
       { label: "Adidas", href: "/shop?brand=adidas" },
-      { label: "Puma", href: "/shop?brand=puma" },
-      { label: "Reebok", href: "/shop?brand=reebok" },
-      { label: "Under Armour", href: "/shop?brand=underarmour" },
-      { label: "New Balance", href: "/shop?brand=newbalance" },
-    ],
-  },
-  {
-    title: "LUXURY BRANDS",
-    items: [
-      { label: "Gucci", href: "/shop?brand=gucci" },
-      { label: "Prada", href: "/shop?brand=prada" },
-      { label: "Louis Vuitton", href: "/shop?brand=lv" },
-      { label: "Chanel", href: "/shop?brand=chanel" },
-      { label: "Dior", href: "/shop?brand=dior" },
-    ],
-  },
-  {
-    title: "STREETWEAR",
-    items: [
-      { label: "Supreme", href: "/shop?brand=supreme" },
-      { label: "Off-White", href: "/shop?brand=offwhite" },
-      { label: "Stussy", href: "/shop?brand=stussy" },
-      { label: "Palace", href: "/shop?brand=palace" },
-      { label: "BAPE", href: "/shop?brand=bape" },
-    ],
-  },
-  {
-    title: "AFFORDABLE",
-    items: [
-      { label: "H&M", href: "/shop?brand=hm" },
       { label: "Zara", href: "/shop?brand=zara" },
-      { label: "Uniqlo", href: "/shop?brand=uniqlo" },
-      { label: "Gap", href: "/shop?brand=gap" },
-      { label: "Old Navy", href: "/shop?brand=oldnavy" },
+    ],
+  },
+  {
+    title: "BEAUTY & HOME",
+    items: [
+      { label: "Chanel", href: "/shop?brand=chanel" },
+      { label: "MAC", href: "/shop?brand=mac" },
+      { label: "CeraVe", href: "/shop?brand=cerave" },
+      { label: "The Ordinary", href: "/shop?brand=ordinary" },
+      { label: "IKEA", href: "/shop?brand=ikea" },
+      { label: "H&M Home", href: "/shop?brand=h%26m" },
     ],
   },
 ];
@@ -103,84 +103,126 @@ const saleMenuColumns = [
   {
     title: "DISCOUNTS",
     items: [
-      { label: "Up to 50% Off", href: "/shop?sale=50" },
-      { label: "Up to 70% Off", href: "/shop?sale=70" },
-      { label: "Clearance", href: "/shop?sale=clearance" },
-      { label: "Flash Deals", href: "/shop?sale=flash" },
+      { label: "On sale", href: "/shop?sale=50" },
+      { label: "View all deals", href: "/shop?sale=50" },
     ],
   },
   {
     title: "CATEGORIES ON SALE",
     items: [
-      { label: "Women's Sale", href: "/shop?sale=women" },
-      { label: "Men's Sale", href: "/shop?sale=men" },
-      { label: "Kids Sale", href: "/shop?sale=kids" },
-      { label: "Accessories Sale", href: "/shop?sale=accessories" },
+      { label: "Electronics", href: "/shop?category=electronics&sale=50" },
+      { label: "Fashion", href: "/shop?category=fashion&sale=50" },
+      { label: "Accessories", href: "/shop?category=accessories&sale=50" },
+      { label: "Beauty", href: "/shop?category=beauty&sale=50" },
+      { label: "Home", href: "/shop?category=home&sale=50" },
+      { label: "Caps", href: "/shop?category=caps&sale=50" },
     ],
   },
   {
     title: "Featured",
     items: [],
     featured: {
-      title: "SEASONAL SALE",
-      image: "/images/prod1.jpg",
-      href: "/shop?sale=seasonal",
+      title: "DEALS THIS WEEK",
+      image: CAT_IMG.fashion,
+      href: "/shop?sale=50",
     },
   },
 ];
 
 const newArrivalsMenuColumns = [
   {
-    title: "NEW THIS WEEK",
+    title: "BROWSE",
     items: [
-      { label: "View All New", href: "/shop?new=week" },
-      { label: "Women's New", href: "/shop?new=women" },
-      { label: "Men's New", href: "/shop?new=men" },
-      { label: "Kids New", href: "/shop?new=kids" },
+      { label: "View all", href: "/shop?new=week" },
+      { label: "Electronics", href: "/shop?category=electronics" },
+      { label: "Fashion", href: "/shop?category=fashion" },
+      { label: "Accessories", href: "/shop?category=accessories" },
     ],
   },
   {
-    title: "TRENDING NOW",
+    title: "MORE",
     items: [
-      { label: "Trending Products", href: "/shop?trending=products" },
-      { label: "Popular Styles", href: "/shop?trending=styles" },
-      { label: "Best Sellers", href: "/shop?trending=bestsellers" },
+      { label: "Beauty", href: "/shop?category=beauty" },
+      { label: "Home", href: "/shop?category=home" },
+      { label: "Caps", href: "/shop?category=caps" },
     ],
   },
   {
     title: "Featured",
     items: [],
     featured: {
-      title: "NEW COLLECTION",
-      image: "/images/prod2.jpg",
-      href: "/shop?collection=new",
+      title: "NEW IN BEAUTY",
+      image: CAT_IMG.beauty,
+      href: "/shop?category=beauty",
     },
   },
 ];
 
-export function Header() {
+export function Header({
+  variant = "mega_menu",
+  compact = false,
+}: HeaderProps) {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const barH = compact ? "h-14" : "h-16";
+
   return (
-    <header className="sticky top-0 z-40 w-full bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/70 border-b border-neutral-100">
-      <div className="container flex h-16 items-center justify-between gap-4">
-        <Link href="/" className="flex items-center gap-2">
-          <img src="/images/logo.png" className="h-20 w-20" alt="" />
-          <span className="font-bold">SMARTSHOPPING</span>
+    <header
+      className="sticky top-0 z-40 w-full border-b border-neutral-200/70 bg-neutral-50/95 backdrop-blur supports-[backdrop-filter]:bg-neutral-50/90"
+      data-header-variant={variant}
+    >
+      <div className={`container flex ${barH} items-center justify-between gap-3 sm:gap-4`}>
+        <Link href="/" className="flex min-w-0 items-center gap-2">
+          <img
+            src="/images/logo.png"
+            className={
+              compact
+                ? "h-10 w-10 shrink-0 sm:h-12 sm:w-12"
+                : "h-14 w-14 shrink-0 sm:h-20 sm:w-20"
+            }
+            alt=""
+          />
+          <span className="truncate text-sm font-bold sm:text-base">
+            SMARTSHOPPING
+          </span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-6 text-sm">
-          <MegaMenuTrigger label="Shop" columns={shopMenuColumns} />
-          <MegaMenuTrigger label="On Sale" columns={saleMenuColumns} />
-          <MegaMenuTrigger label="New Arrivals" columns={newArrivalsMenuColumns} />
-          <MegaMenuTrigger label="Brands" columns={brandsMenuColumns} />
-          <Link
-            href="/shop/mood"
-            className="font-medium text-neutral-800 hover:text-neutral-600"
-          >
-            Mood camera
-          </Link>
-        </nav>
+        {variant === "top_bar" ? (
+          <nav className="hidden items-center gap-5 text-sm font-medium md:flex">
+            {TOP_BAR_LINKS.map((link) => (
+              <Link
+                key={link.href + link.label}
+                href={link.href}
+                className="text-neutral-800 hover:text-neutral-600"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+        ) : variant === "fullscreen" ? (
+          <nav className="hidden md:block">
+            <p className="text-xs text-neutral-500">
+              Categories open full-screen from the menu
+            </p>
+          </nav>
+        ) : (
+          <nav className="hidden items-center gap-6 text-sm md:flex">
+            <MegaMenuTrigger label="Shop" columns={shopMenuColumns} />
+            <MegaMenuTrigger label="On Sale" columns={saleMenuColumns} />
+            <MegaMenuTrigger
+              label="New Arrivals"
+              columns={newArrivalsMenuColumns}
+            />
+            <MegaMenuTrigger label="Brands" columns={brandsMenuColumns} />
+            <Link
+              href="/shop/mood"
+              className="font-medium text-neutral-800 hover:text-neutral-600"
+            >
+              Mood camera
+            </Link>
+          </nav>
+        )}
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <div className="hidden md:block">
             <SearchBar />
           </div>
@@ -189,12 +231,32 @@ export function Header() {
           <Link
             href="/shop/cart"
             aria-label="Cart"
-            className="rounded-full border p-2 hover:bg-neutral-50 transition"
+            className="rounded-full border p-2 transition hover:bg-neutral-50"
           >
             🛒
           </Link>
+
+          <button
+            type="button"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-neutral-200 md:hidden"
+            aria-label="Open menu"
+            aria-expanded={mobileOpen}
+            onClick={() => setMobileOpen(true)}
+          >
+            <span className="sr-only">Menu</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
+              <path
+                d="M4 7h16M4 12h16M4 17h16"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+            </svg>
+          </button>
         </div>
       </div>
+
+      <MobileNav open={mobileOpen} onClose={() => setMobileOpen(false)} />
     </header>
   );
 }
